@@ -1,10 +1,10 @@
 GIT
-  remote: https://github.com/cschuijt/omniauth-marvin.git
-  revision: 91dcdd5beb46fc4b66210ac93585f4edfae07e1b
+  remote: https://github.com/fakenine/omniauth-marvin.git
+  revision: 082c95aaca6cc4fe938580c9f6abe83465ba19d4
   specs:
     omniauth-marvin (1.2.0)
       multi_json (~> 1.15.0)
-      omniauth-oauth2 (= 1.7.3)
+      omniauth-oauth2 (= 1.8.0)
 
 GEM
   remote: https://rubygems.org/
@@ -177,9 +177,9 @@ GEM
       hashie (>= 3.4.6)
       rack (>= 2.2.3)
       rack-protection
-    omniauth-oauth2 (1.7.3)
+    omniauth-oauth2 (1.8.0)
       oauth2 (>= 1.4, < 3)
-      omniauth (>= 1.9, < 3)
+      omniauth (~> 2.0)
     omniauth-rails_csrf_protection (1.0.1)
       actionpack (>= 4.2)
       omniauth (~> 2.0)
