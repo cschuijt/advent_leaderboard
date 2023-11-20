@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_20_180422) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_20_185728) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "days", force: :cascade do |t|
+    t.integer "number"
+    t.boolean "visible", default: true
+    t.boolean "open", default: true
+    t.bigint "year_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["year_id", "number"], name: "index_days_on_year_id_and_number"
+  end
 
   create_table "good_job_batches", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -100,6 +110,13 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_20_180422) do
     t.datetime "updated_at", null: false
     t.index ["aoc_user_id"], name: "index_users_on_aoc_user_id", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
+  end
+
+  create_table "years", force: :cascade do |t|
+    t.integer "number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["number"], name: "index_years_on_number", unique: true
   end
 
 end
