@@ -125,6 +125,9 @@ GEM
       railties (>= 6.0.0)
       thor (>= 0.14.1)
     hashie (5.0.0)
+    httparty (0.21.0)
+      mini_mime (>= 1.0.0)
+      multi_xml (>= 0.5.2)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     importmap-rails (1.2.3)
@@ -304,6 +307,7 @@ DEPENDENCIES
   debug
   factory_bot_rails (~> 6.4)
   good_job (~> 3.21.1)
+  httparty (~> 0.21.0)
   importmap-rails
   jbuilder
   omniauth (~> 2.1.1)
