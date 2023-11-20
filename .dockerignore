@@ -8,6 +8,7 @@
 
 # Ignore all environment files (except templates).
 /.env*
+/.devcontainer/.env
 !/.env*.erb
 
 # Ignore all default key files.
