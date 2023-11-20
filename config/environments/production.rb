@@ -68,7 +68,10 @@ Rails.application.configure do
   # config.cache_store = :mem_cache_store
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
-  # config.active_job.queue_adapter = :resque
+  config.active_job.queue_adapter = :good_job
+  # Execute jobs asynchronously in the server pool, because we don't have all
+  # that many things to do behind the scenes
+  config.good_job.execution_mode = :async
   # config.active_job.queue_name_prefix = "advent_leaderboard_production"
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
