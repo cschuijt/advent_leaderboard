@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_20_185728) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_20_191042) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,7 +21,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_20_185728) do
     t.bigint "year_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["year_id", "number"], name: "index_days_on_year_id_and_number"
+    t.index ["year_id", "number"], name: "index_days_on_year_id_and_number", unique: true
   end
 
   create_table "good_job_batches", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
