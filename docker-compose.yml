@@ -15,6 +15,7 @@ services:
       SECRET_KEY_BASE : ${SECRET_KEY_BASE}
       FORTYTWO_KEY    : ${FORTYTWO_KEY}
       FORTYTWO_SECRET : ${FORTYTWO_SECRET}
+      SENTRY_DSN      : ${SENTRY_DSN}
     depends_on:
       - db
 
