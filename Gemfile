@@ -50,6 +50,9 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
+
+  gem 'rspec-rails', '~> 6.0.3'
+  gem 'factory_bot_rails', '~> 6.4'
 end
 
 group :development do
@@ -63,3 +66,11 @@ group :development do
   # gem "spring"
 end
 
+gem 'omniauth', '~> 2.1.1'
+gem 'omniauth-rails_csrf_protection'
+gem 'omniauth-marvin', github: 'cschuijt/omniauth-marvin'
+
+gem 'sentry-ruby'
+gem 'sentry-rails'
+
+gem 'good_job', '~> 3.21.1'
