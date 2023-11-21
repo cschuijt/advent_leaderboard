@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       redirect_to root_url
     end
 
-    user = User.find_or_create_by(username: auth.info.login)
+    user = User.find_or_initialize_by(username: auth.info.login)
     user.full_name = auth.extra.raw_info.usual_full_name
     user.photo_url = auth.extra.raw_info.image.versions.medium
 
