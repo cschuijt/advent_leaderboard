@@ -8,12 +8,12 @@ module AdventOfCode
       @year = year
     end
 
-    def create_models
+    def create_models(day_count = 25)
       ActiveRecord::Base.transaction do
         # If the year already exists, this will raise an error
         # and interrupt the transaction/job.
         new_year = Year.create!(number: @year)
-        25.times do |i|
+        day_count.times do |i|
           Day.create!(year: new_year, number: i + 1)
         end
       end
