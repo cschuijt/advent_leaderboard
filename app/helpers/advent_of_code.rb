@@ -33,12 +33,18 @@ module AdventOfCode
 
     def import
       ActiveRecord::Base.transaction do
+        @users = User.all
+
         @response['members'].each do |k, v|
-          # Look for a participant with our ID. We have pre-fetched
-          # this data on construction, so there is no need to query
-          # the database again.
-          participant = @year.participants.find { |p| p.aoc_user_id == k }
-          if participant
+          # Check if the user is known to us, eg. a user has listed
+          # this AoC user ID as their own. If so, we can find or create
+          # a participant in this year. If not, we move on to the next.
+          user = @users.find { |u| u.aoc_user_id == k }
+          if user
+            # We use this construction instead of find_or_create_by to
+            # avoid N+1 queries here.
+            participant = @year.participants.find { |p| p.user_id == user.id } ||
+                          @year.participants.create!(user: user)
             participant.update!(score: v['local_score'])
             update_participant_stars(participant, v)
           end
