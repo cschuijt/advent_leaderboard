@@ -24,7 +24,10 @@ gem "turbo-rails"
 gem "stimulus-rails"
 
 # Use Tailwind CSS [https://github.com/rails/tailwindcss-rails]
-gem "tailwindcss-rails"
+# gem "tailwindcss-rails"
+gem 'bootstrap', '~> 5.3.2'
+gem 'dartsass-sprockets'
+gem 'mini_racer'
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
