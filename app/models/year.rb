@@ -1,6 +1,6 @@
 class Year < ApplicationRecord
-  has_many :days
-  has_many :participants
+  has_many :days,         dependent: :destroy
+  has_many :participants, dependent: :destroy
 
   has_many :stars, through: :days
   has_many :users, through: :participants

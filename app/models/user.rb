@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :participations, class_name: 'Participant'
+  has_many :participations, class_name: 'Participant', dependent: :destroy
   has_many :years, through: :participations
   has_many :stars, through: :participations
 

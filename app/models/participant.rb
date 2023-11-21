@@ -2,7 +2,7 @@ class Participant < ApplicationRecord
   belongs_to :year
   belongs_to :user
 
-  has_many :stars
+  has_many :stars, dependent: :destroy
 
   default_scope { joins(:user) }
 
