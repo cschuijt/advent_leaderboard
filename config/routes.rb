@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   # or a dashboard for existing users
   root 'pages#home'
 
+  # Protection against unauthorized access in config/initializers/good_job.rb
+  mount GoodJob::Engine => 'good_job'
+
   get '/years', to: 'years#index'
 
   # We do some implicit routing here
