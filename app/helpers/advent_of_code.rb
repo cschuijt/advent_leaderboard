@@ -27,19 +27,19 @@ module AdventOfCode
       @response = response
       # If we cannot find a Year object for this response,
       # we should raise an error now.
-      @year = Year.includes(:participants, days: :stars)
-                  .find_by!(number: response[:event])
+      @year = Year.includes(participants: :user, days: :stars)
+                  .find_by!(number: response['event'])
     end
 
     def import
       ActiveRecord::Base.transaction do
-        @response[:members].each do |k, v|
+        @response['members'].each do |k, v|
           # Look for a participant with our ID. We have pre-fetched
           # this data on construction, so there is no need to query
           # the database again.
           participant = @year.participants.find { |p| p.aoc_user_id == k }
           if participant
-            participant.update!(score: values[:local_score])
+            participant.update!(score: v['local_score'])
             update_participant_stars(participant, v)
           end
         end
@@ -53,16 +53,19 @@ module AdventOfCode
       # We go over each day the user has achieved stars for,
       # then we try to see if that star already exists in our
       # database for that user. If not, we create it now.
-      values[:completion_day_level].each do |day_no, stars|
-        day = @year.days.find { |d| d.number == day_no }
+      values['completion_day_level'].each do |day_no, stars|
+        day = @year.days.find { |d| d.number == day_no.to_i }
         raise ActiveRecord::RecordNotFound.new if day.nil?
 
         stars.each do |star_index, data|
-          unless day.stars.find { |s| s.index == star_index && s.participant == participant }
+          unless day.stars.find { |s|
+            # Use participant_id here to avoid N+1 queries
+            s.index == star_index.to_i && s.participant_id == participant.id
+          }
             day.stars.create!(
               index: star_index,
               participant: participant,
-              completed_at: Time.at(data[:get_star_ts].to_i)
+              completed_at: Time.at(data['get_star_ts'].to_i)
             )
           end
         end
@@ -101,7 +104,7 @@ module AdventOfCode
           response.response
         )
       else
-        return response
+        return JSON.parse(response.body)
       end
     end
 
