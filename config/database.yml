@@ -20,6 +20,8 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   port: <%= ENV.fetch("DB_PORT") { 5432 } %>
   host: <%= ENV.fetch("DB_HOST") { "localhost" } %>
+  username: <%= ENV.fetch("DB_USER") { "advent" } %>
+  password: <%= ENV.fetch("DB_PASS") { "password" } %>
 
 
 development:
@@ -83,5 +85,3 @@ test:
 production:
   <<: *default
   database: <%= ENV.fetch("DB_NAME") { "advent"   } %>
-  username: <%= ENV.fetch("DB_USER") { "advent"   } %>
-  password: <%= ENV.fetch("DB_PASS") { "password" } %>
