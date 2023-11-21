@@ -1,0 +1,58 @@
+<!-- <nav>
+  <div class="">
+    <h1 class="font-semibold text-3xl flex items-baseline my-8">
+      Codam Advent of Code Leaderboard
+      <span class="font-normal italic text-xl px-3">
+        <%= page_year %>
+      </span>
+    </h1>
+
+    <div class="w-full md:block md:w-auto">
+      <% if logged_in? %>
+        <%= form_tag('/logout', method: 'delete', data: {turbo: false}) do %>
+          <% if current_user.photo_url %>
+            <img src="<%= current_user.photo_url %>" class="inline w-8 h-8 mr-2 rounded-full" alt="Current user avatar">
+          <% end %>
+          <span><%= current_user.username %></span>
+           |
+          <button type='submit'>Log out</button>
+        <% end %>
+      <% else %>
+        <%= form_tag('/auth/marvin', method: 'post', data: {turbo: false}, class: "my-6") do %>
+          <button type='submit' class="self-center rounded-md py-2 px-4 bg-blue-600">Log in with 42</button>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</nav> -->
+
+<nav>
+  <div class="navbar">
+    <div class="container">
+      <%= link_to root_url, class: "navbar-brand" do %>
+        Codam Advent of Code Leaderboard
+        <span class="text-secondary text-italic">
+          <%= page_year %>
+        </span>
+      <% end %>
+
+      <span class="d-flex navbar-text">
+        <% if logged_in? %>
+          <span class="me-2 navbar-avatar">
+            <% if current_user.photo_url %>
+              <img src="<%= current_user.photo_url %>" class="rounded inline-avatar">
+            <% end %>
+            <%= current_user.username %>
+          </span>
+          <%= form_tag('/logout', method: 'delete', data: {turbo: false}) do %>
+            <button type='submit' class="btn btn-outline-danger">Log out</button>
+          <% end %>
+        <% else %>
+          <%= form_tag('/auth/marvin', method: 'post', data: {turbo: false}) do %>
+            <button type='submit' class="btn btn-outline-primary">Log in with 42</button>
+          <% end %>
+        <% end %>
+      </span>
+    </div>
+  </div>
+</nav>
