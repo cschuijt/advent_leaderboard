@@ -8,6 +8,6 @@ class User < ApplicationRecord
                           },
                           uniqueness: true,
                           allow_nil: true
-  validates :intra_username, presence: true, uniqueness: true
+  validates :username, presence: true, uniqueness: true
 
 end
