@@ -72,6 +72,7 @@ Rails.application.configure do
   # Execute jobs asynchronously in the server pool, because we don't have all
   # that many things to do behind the scenes
   config.good_job.execution_mode = :async
+  config.good_job.enable_cron = true
   # config.active_job.queue_name_prefix = "advent_leaderboard_production"
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
