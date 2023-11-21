@@ -9,6 +9,11 @@ Rails.application.routes.draw do
   # or a dashboard for existing users
   root 'pages#home'
 
+  # Callback for logging in with 42 will create a session,
+  # logging out will destroy one
+  get '/auth/marvin/callback', to: 'sessions#create'
+  delete '/logout',            to: 'sessions#destroy'
+
   # Protection against unauthorized access in config/initializers/good_job.rb
   mount GoodJob::Engine => 'good_job'
 
