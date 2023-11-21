@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   get '/years', to: 'years#index'
 
   # We do some implicit routing here
+  # When adding other routes, put them above this one
+  # to avoid this catch-all from taking the request instead.
   get '/:year', to: 'years#show' do
     get '/:day', to: 'days#show'
   end
