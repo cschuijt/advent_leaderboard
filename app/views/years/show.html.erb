@@ -1,0 +1,13 @@
+<% content_for :title do @year.number end %>
+
+<div class="row">
+  <div class="col">
+    <%= render 'years/scoreboard' %>
+  </div>
+  <div class="col">
+    <!-- Template for today's thing goes here -->
+  </div>
+  <div class="col">
+    <%= render 'years/days_overview' %>
+  </div>
+</div>
