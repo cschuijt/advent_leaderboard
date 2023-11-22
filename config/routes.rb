@@ -19,6 +19,10 @@ Rails.application.routes.draw do
 
   get '/years', to: 'years#index'
 
+  get    '/users', to: 'users#edit',    as: 'edit_user'
+  patch  '/users', to: 'users#update',  as: 'update_user'
+  delete '/users', to: 'users#destroy', as: 'destroy_user'
+
   # We do some implicit routing here
   # When adding other routes, put them above this one
   # to avoid this catch-all from taking the request instead.
