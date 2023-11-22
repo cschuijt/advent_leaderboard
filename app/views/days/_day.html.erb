@@ -1,0 +1,24 @@
+<h4>Today's stats (day <%= day.number %>)</h4>
+
+<h5>Completion rate</h5>
+<%= count_gold(day)       %> gold
+<%= count_silver(day)     %> silver
+<%= count_incomplete(day) %> incomplete
+
+<h5>Today's fastest</h5>
+<% if day.stars.any? %>
+  <% top_speeds(day).each.with_index do |p, i| %>
+    <%= i + 1 %>
+
+    <img src="<%= p.photo_url %>" class="inline-avatar">
+    <%= p.username %>
+
+    <%= rank_for_participant(day, p) %>
+
+    <%= time_for_participant(day, p) %>
+  <% end %>
+<% else %>
+  <p class="text-center text-secondary">
+    No one has completed this puzzle yet!
+  </p>
+<% end %>
