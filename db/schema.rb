@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_21_171300) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_22_002713) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "days", force: :cascade do |t|
     t.integer "number"
-    t.boolean "visible", default: true
-    t.boolean "open", default: true
+    t.boolean "open", default: false, null: false
     t.bigint "year_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
