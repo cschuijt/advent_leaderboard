@@ -5,7 +5,13 @@
     <%= render 'years/scoreboard' %>
   </div>
   <div class="col">
-    <!-- Template for today's thing goes here -->
+    <% if @today %>
+      <%= render @today %>
+    <% else %>
+      <p class="text-center text-secondary">
+        This event is not active right now.
+      </p>
+    <% end %>
   </div>
   <div class="col">
     <%= render 'years/days_overview' %>
