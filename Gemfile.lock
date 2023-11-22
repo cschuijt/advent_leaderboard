@@ -93,6 +93,11 @@ GEM
     bootstrap (5.3.2)
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 2.11.8, < 3)
+    bootstrap-icons (1.0.14)
+      nokogiri (~> 1)
+    bootstrap-icons-helper (2.0.2)
+      bootstrap-icons (~> 1)
+      rails (>= 7.0)
     builder (3.2.4)
     concurrent-ruby (1.2.2)
     connection_pool (2.4.1)
@@ -325,6 +330,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   bootstrap (~> 5.3.2)
+  bootstrap-icons-helper
   dartsass-sprockets
   debug
   factory_bot_rails (~> 6.4)

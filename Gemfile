@@ -28,6 +28,7 @@ gem "stimulus-rails"
 gem 'bootstrap', '~> 5.3.2'
 gem 'dartsass-sprockets'
 gem 'mini_racer'
+gem 'bootstrap-icons-helper'
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
