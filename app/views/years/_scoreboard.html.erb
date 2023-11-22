@@ -1,31 +1,3 @@
-<!-- <div>
-  <h2 class="w-full text-center">Scoreboard</h2>
-  <hr>
-  <table class="w-auto flex table-auto">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Score</th>
-        <th>Gold</th>
-        <th>Silver</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @year.participants.order(score: :desc, username: :asc).each do |p| %>
-        <tr>
-          <td>
-            <img src="<%= p.photo_url %>" class="h-6 w-6 rounded-full mr-2">
-            <%= p.username %>
-          </td>
-          <td><%= p.score %></td>
-          <td><%= p.gold_stars.count %></td>
-          <td><%= p.silver_stars.count %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div> -->
-
 <h4>Scoreboard</h4>
 <table class="table table-striped">
   <thead>
@@ -42,10 +14,8 @@
       <tr>
         <td><strong><%= i + 1 %></strong></td>
         <td>
-          <span class="">
             <img src="<%= p.photo_url %>" class="inline-avatar">
             <%= p.username %>
-          </span>
         </td>
         <td><%= p.score %></td>
         <td><%= p.gold_stars.count %></td>
