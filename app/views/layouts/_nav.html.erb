@@ -1,12 +1,28 @@
 <nav>
   <div class="navbar">
     <div class="container">
-      <%= link_to root_url, class: 'navbar-brand' do %>
-        Codam Advent of Code Leaderboard
-        <span class="text-secondary text-italic">
+      <span class="navbar-brand">
+        <%= link_to root_url, class: 'navbar-brand' do %>
+          Codam Advent of Code Leaderboard
+        <% end %>
+
+        <span class="badge bg-secondary">
+          <%# This is a crime against mvc %>
+          <% if Year.find_by(number: page_year - 1) %>
+            <%= link_to year_url(page_year - 1) do %>
+              <%= bootstrap_icon 'caret-left' %>
+            <% end %>
+          <% end %>
+
           <%= page_year %>
+
+          <% if Year.find_by(number: page_year + 1) %>
+            <%= link_to year_url(page_year + 1) do %>
+              <%= bootstrap_icon 'caret-right' %>
+            <% end %>
+          <% end %>
         </span>
-      <% end %>
+      </span>
 
       <span class="d-flex navbar-text">
         <% if logged_in? %>
