@@ -26,13 +26,13 @@ module DaysHelper
     return num_gold
   end
 
-  def top_speeds(day)
-    stars = day.stars.joins(:participant).order(index: :desc, completed_at: :asc).limit(6)
+  def top_speeds(day, n = 5)
+    stars = day.stars.joins(:participant).order(index: :desc, completed_at: :asc).limit(n * 2)
 
     # It is possible that our array includes two stars for the same
     # participant, so we grab the maximum required number and
     # filter out duplicate values.
-    return stars.map(&:participant).uniq.first(3)
+    return stars.map(&:participant).uniq.first(n)
   end
 
   def rank_for_participant(day, participant)
