@@ -20,6 +20,7 @@ It is also possible to use just the `Dockerfile` for the app container, but then
 |**FORTYTWO_SECRET**|Secret for the 42 API. Make sure to schedule your life around their expiration and replacement dates.|
 |**SENTRY_DSN**|Intake URL for Sentry. Leave this blank to not initialize Sentry at all.|
 |**AOC_LEADERBOARD_ID**|The user ID of the owner of the private leaderboard you want to track.|
+|**AOC_LEADERBOARD_JOIN_TOKEN**|The code with which new users can join the private leaderboard.|
 |**AOC_LOGIN_TOKEN**|Session cookie from Advent of Code. Pull this from your browser, they last about a month.|
 
 ### Contributing

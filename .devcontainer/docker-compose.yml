@@ -10,16 +10,17 @@ services:
       - ../..:/workspaces:cached
 
     environment:
-      DB_HOST            : ${DB_HOST}
-      DB_PORT            : ${DB_PORT}
-      DB_USER            : ${DB_USER}
-      DB_PASS            : ${DB_PASS}
-      SECRET_KEY_BASE    : ${SECRET_KEY_BASE}
-      FORTYTWO_KEY       : ${FORTYTWO_KEY}
-      FORTYTWO_SECRET    : ${FORTYTWO_SECRET}
-      SENTRY_DSN         : ${SENTRY_DSN}
-      AOC_LEADERBOARD_ID : ${AOC_LEADERBOARD_ID}
-      AOC_LOGIN_TOKEN    : ${AOC_LOGIN_TOKEN}
+      DB_HOST                    : ${DB_HOST}
+      DB_PORT                    : ${DB_PORT}
+      DB_USER                    : ${DB_USER}
+      DB_PASS                    : ${DB_PASS}
+      SECRET_KEY_BASE            : ${SECRET_KEY_BASE}
+      FORTYTWO_KEY               : ${FORTYTWO_KEY}
+      FORTYTWO_SECRET            : ${FORTYTWO_SECRET}
+      SENTRY_DSN                 : ${SENTRY_DSN}
+      AOC_LEADERBOARD_ID         : ${AOC_LEADERBOARD_ID}
+      AOC_LEADERBOARD_JOIN_TOKEN : ${AOC_LEADERBOARD_JOIN_TOKEN}
+      AOC_LOGIN_TOKEN            : ${AOC_LOGIN_TOKEN}
 
     container_name: advent-dev-app
 
