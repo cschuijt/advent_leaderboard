@@ -19,10 +19,13 @@ It is also possible to use just the `Dockerfile` for the app container, but then
 |**FORTYTWO_KEY**|UID for the 42 API. You can generate this [here.](https://profile.intra.42.fr/oauth/applications)|
 |**FORTYTWO_SECRET**|Secret for the 42 API. Make sure to schedule your life around their expiration and replacement dates.|
 |**SENTRY_DSN**|Intake URL for Sentry. Leave this blank to not initialize Sentry at all.|
-|**AOC_LEADERBOARD_ID**|The user ID of the owner of the private leaderboard you want to track.|
-|**AOC_LEADERBOARD_JOIN_TOKEN**|The code with which new users can join the private leaderboard.|
+|**AOC_LEADERBOARD_ID**|The user ID of the owner of the private leaderboard you want to track. You can find yours [here.](https://adventofcode.com/2023/settings)|
+|**AOC_LEADERBOARD_JOIN_TOKEN**|The code with which new users can join the private leaderboard. You can find it [here.](https://adventofcode.com/2023/leaderboard/private)|
 |**AOC_LOGIN_TOKEN**|Session cookie from Advent of Code. Pull this from your browser, they last about a month.|
 
 ### Contributing
 
 The whole thing is a short and sweet Rails 7 app. A dev container file is included in the repo, so after filling out the environment variables, getting started is easy.
+
+The `main` branch automatically deploys to production. For pull requests that are
+not production ready, please target `development` instead.
