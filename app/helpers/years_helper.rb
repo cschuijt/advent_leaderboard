@@ -15,4 +15,8 @@ module YearsHelper
       return nil
     end
   end
+
+  def count_completed_days(year)
+    return year.stars.includes(:day).map(&:day).uniq.length
+  end
 end
