@@ -28,7 +28,7 @@ It is also possible to use just the `Dockerfile` for the app container, but then
 Admins in our app cannot actually do much, but they can access the dashboard
 for Good Job, our jobs backend. To give yourself admin access after logging in,
 open a terminal in the app container, run `bin/rails console` and update your
-details like so: `User.find(username: your-42-username).update(admin: true)`.
+details like so: `User.find_by(username: your-42-username).update(admin: true)`.
 At this point, you will be able to access the dashboard through `127.0.0.1:3000/good_job`.
 
 ### Contributing
