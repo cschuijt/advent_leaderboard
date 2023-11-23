@@ -29,6 +29,7 @@ gem 'bootstrap', '~> 5.3.2'
 gem 'dartsass-sprockets'
 gem 'mini_racer'
 gem 'bootstrap-icons-helper'
+gem 'bootstrap_form', '~> 5.4'
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"

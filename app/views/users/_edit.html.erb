@@ -1,10 +1,53 @@
 <turbo-frame id="edit-user-frame">
   <% if logged_in? %>
-    <div class="row">
-      <%= form_with model: current_user, url: update_user_url, method: 'patch' do |f| %>
-        <%= f.text_field :aoc_user_id %>
-        <%= f.submit %>
-      <% end %>
+    <div class="row justify-content-end" id="edit-user-form-div">
+      <div class="col-md-8 col-lg-6 col-xl-4">
+        <%= bootstrap_form_with model: current_user, url: update_user_url, method: 'patch' do |f| %>
+          <div class="card">
+            <div class="card-header container-fluid">
+              <div class="row">
+                <div class="col-10">
+                  <span class="fw-bold">Edit Advent of Code user ID</span>
+                </div>
+                <div class="col-2 text-end">
+                  <button type="button" class="btn-close" aria-label="Close" onclick="document.getElementById('edit-user-form-div').remove();"></button>
+                </div>
+              </div>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <span class="text-secondary">
+                  <p>
+                    To appear on the leaderboard, you need to link your
+                    Advent of Code account to your 42 account.
+                  </p>
+                  <p>
+                    You can find your AoC user ID as follows:
+                    <ol>
+                      <li>
+                        Go to <a href="https://adventofcode.com" target="_blank">adventofcode.com</a> and log in.
+                      </li>
+                      <li>
+                        Go to your settings <a href="https://adventofcode.com/<%= page_year %>/settings" target="_blank">here.</a>
+                      </li>
+                      <li>
+                        Your account ID is the number where it says "(anonymous user #000)".
+                        Copy this number into the box below.
+                      </li>
+                    </ol>
+                  </p>
+                </span>
+              </li>
+              <li class="list-group-item">
+                <%= f.text_field :aoc_user_id, label: 'User ID' %>
+              </li>
+            </ul>
+            <div class="card-footer">
+              <%= f.submit class: 'btn btn-primary' %>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
   <%end %>
 </turbo-frame>
