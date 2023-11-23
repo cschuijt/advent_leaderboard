@@ -1,0 +1,16 @@
+<h4>Overview</h4>
+<div class="container-fluid">
+  <div class="row row-cols-5 gx-1 gy-1">
+    <% @year.days.order(number: :asc).each do |day| %>
+      <div class="col">
+        <%= link_to year_day_url(@year.number, day.number), class: 'link-underline link-underline-opacity-0' do %>
+          <div class="card <%= bg_class_for_day(day) %>">
+            <div class="card-body w-auto text-center align-middle">
+              <span class="fs-3 text-reset"><%= day.number %></span>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
