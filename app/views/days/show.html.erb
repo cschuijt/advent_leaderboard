@@ -1,0 +1,23 @@
+<div class="row mb-10">
+  <h1>
+    Day <%= @day.number %>
+    <span class="text-secondary fs-3">
+      <%= @day.year.number %>
+    </span>
+  </h1>
+</div>
+
+<div class="row gx-4">
+  <div class="col-12 col-lg-4 mb-4">
+    <h4>Stats</h4>
+    <%= render 'days/counters', day: @day %>
+  </div>
+
+  <div class="col-12 col-lg-8">
+    <h4>Gold leaderboard</h4>
+    <%= render 'days/gold_leaderboard', day: @day, count: @day.year.participants.count %>
+    <hr>
+    <h4>Silver leaderboard</h4>
+    <%= render 'days/silver_leaderboard', day: @day, count: @day.year.participants.count %>
+  </div>
+</div>
