@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   # Protection against unauthorized access in config/initializers/good_job.rb
   mount GoodJob::Engine => 'good_job'
 
+  # No need to do this the resourceful way, there is only
+  # one user you will ever need to edit, update or destroy
   get    '/users', to: 'users#edit',    as: 'edit_user'
   patch  '/users', to: 'users#update',  as: 'update_user'
   delete '/users', to: 'users#destroy', as: 'destroy_user'
@@ -24,7 +26,6 @@ Rails.application.routes.draw do
   # We do some implicit routing here
   # When adding other routes, put them above this one
   # to avoid this catch-all from taking the request instead.
-  get '/:year', to: 'years#show', as: 'year' do
-    get '/:day', to: 'days#show', as: 'day'
-  end
+  get '/:year',      to: 'years#show', as: 'year'
+  get '/:year/:day', to: 'days#show',  as: 'year_day'
 end
