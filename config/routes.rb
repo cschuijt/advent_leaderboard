@@ -17,8 +17,6 @@ Rails.application.routes.draw do
   # Protection against unauthorized access in config/initializers/good_job.rb
   mount GoodJob::Engine => 'good_job'
 
-  get '/years', to: 'years#index'
-
   get    '/users', to: 'users#edit',    as: 'edit_user'
   patch  '/users', to: 'users#update',  as: 'update_user'
   delete '/users', to: 'users#destroy', as: 'destroy_user'
