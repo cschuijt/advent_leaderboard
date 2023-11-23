@@ -30,21 +30,65 @@
     </div>
   </div>
 </div>
+
 <hr>
-<h6>Today's fastest</h6>
-<% if day.stars.any? %>
-  <% top_speeds(day).each.with_index do |p, i| %>
-    <%= i + 1 %>
 
-    <img src="<%= p.photo_url %>" class="inline-avatar">
-    <%= p.username %>
+<h5>Today's fastest</h5>
 
-    <%= rank_for_participant(day, p) %>
-
-    <%= time_for_participant(day, p) %>
-  <% end %>
+<h6>Gold</h6>
+<% if top_speeds(day, 10, 2).any? %>
+  <table class="table table-warning table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% top_speeds(day, 10, 2).each.with_index do |r, i| %>
+        <tr>
+          <td><strong><%= i + 1 %></strong></td>
+          <td>
+              <img src="<%= r[0].photo_url %>" class="inline-avatar rounded">
+              <%= r[0].username %>
+          </td>
+          <td><%= r[1].completed_at %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <% else %>
-  <p class="text-center text-secondary">
-    No one has completed this puzzle yet!
+  <p class="text-secondary text-center">
+    You can still be the first to complete today's gold level!
+  </p>
+<% end %>
+
+<h6>Silver</h6>
+<% if top_speeds(day, 10, 1).any? %>
+  <table class="table table-light table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% top_speeds(day, 10, 1).each.with_index do |r, i| %>
+        <tr>
+          <td><strong><%= i + 1 %></strong></td>
+          <td>
+              <img src="<%= r[0].photo_url %>" class="inline-avatar rounded">
+              <%= r[0].username %>
+          </td>
+          <td><%= r[1].completed_at %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p class="text-secondary text-center">
+    You can still be the first to complete today's silver level!
   </p>
 <% end %>
