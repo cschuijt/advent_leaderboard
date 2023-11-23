@@ -1,11 +1,37 @@
-<h4>Today's stats (day <%= day.number %>)</h4>
+<h4>Today's stats <span class="fs-5 text-secondary fw-normal">day <%= day.number %></span></h4>
 
-<h5>Completion rate</h5>
-<%= count_gold(day)       %> gold
-<%= count_silver(day)     %> silver
-<%= count_incomplete(day) %> incomplete
+<div class="container-fluid">
+  <div class="row row-cols-3 gx-1 mb-0">
+    <div class="col">
+      <div class="card bg-gold text-center align-middle pb-2 h-100">
+        <span class="fs-2">
+          <%= count_gold(day) %>
+        </span>
+        Gold
+      </div>
+    </div>
 
-<h5>Today's fastest</h5>
+    <div class="col">
+      <div class="card bg-silver text-center align-middle pb-2 h-100">
+        <span class="fs-2">
+          <%= count_silver(day) %>
+        </span>
+        Silver
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card text-center align-middle pb-2 h-100">
+        <span class="fs-2">
+          <%= count_incomplete(day) %>
+        </span>
+        Incomplete
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+<h6>Today's fastest</h6>
 <% if day.stars.any? %>
   <% top_speeds(day).each.with_index do |p, i| %>
     <%= i + 1 %>
