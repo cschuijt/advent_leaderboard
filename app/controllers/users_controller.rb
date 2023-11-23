@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = current_user
-    render 'users/_edit'
+    render 'users/_edit', layout: 'no_turbo_frame'
   end
 
   def update
