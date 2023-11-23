@@ -1,0 +1,21 @@
+<table class="table table-light table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% top_speeds(day, 5, 1).each.with_index do |r, i| %>
+      <tr>
+        <td><strong><%= i + 1 %></strong></td>
+        <td>
+            <img src="<%= r[0].photo_url %>" class="inline-avatar rounded">
+            <%= r[0].username %>
+        </td>
+        <td><%= r[1].completed_at.to_scoreboard_format %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

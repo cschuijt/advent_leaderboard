@@ -1,0 +1,30 @@
+<div class="container-fluid">
+  <div class="row row-cols-3 gx-1 mb-0">
+    <div class="col">
+      <div class="card bg-gold text-center align-middle pb-2 h-100">
+        <span class="fs-2">
+          <%= count_gold(day) %>
+        </span>
+        Gold
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card bg-silver text-center align-middle pb-2 h-100">
+        <span class="fs-2">
+          <%= count_silver(day) %>
+        </span>
+        Silver
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card text-center align-middle pb-2 h-100">
+        <span class="fs-2">
+          <%= count_incomplete(day) %>
+        </span>
+        Incomplete
+      </div>
+    </div>
+  </div>
+</div>

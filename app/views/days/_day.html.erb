@@ -1,35 +1,6 @@
 <h4>Today's stats <span class="fs-5 text-secondary fw-normal">day <%= day.number %></span></h4>
 
-<div class="container-fluid">
-  <div class="row row-cols-3 gx-1 mb-0">
-    <div class="col">
-      <div class="card bg-gold text-center align-middle pb-2 h-100">
-        <span class="fs-2">
-          <%= count_gold(day) %>
-        </span>
-        Gold
-      </div>
-    </div>
-
-    <div class="col">
-      <div class="card bg-silver text-center align-middle pb-2 h-100">
-        <span class="fs-2">
-          <%= count_silver(day) %>
-        </span>
-        Silver
-      </div>
-    </div>
-
-    <div class="col">
-      <div class="card text-center align-middle pb-2 h-100">
-        <span class="fs-2">
-          <%= count_incomplete(day) %>
-        </span>
-        Incomplete
-      </div>
-    </div>
-  </div>
-</div>
+<%= render 'days/counters', day: day %>
 
 <hr>
 
@@ -37,27 +8,7 @@
 
 <h6>Gold</h6>
 <% if top_speeds(day, 5, 2).any? %>
-  <table class="table table-warning table-striped">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Name</th>
-        <th>Time</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% top_speeds(day, 5, 2).each.with_index do |r, i| %>
-        <tr>
-          <td><strong><%= i + 1 %></strong></td>
-          <td>
-              <img src="<%= r[0].photo_url %>" class="inline-avatar rounded">
-              <%= r[0].username %>
-          </td>
-          <td><%= r[1].completed_at.to_scoreboard_format %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <%= render 'days/gold_leaderboard', day: day, count: 5 %>
 <% else %>
   <p class="text-secondary text-center">
     You can still be the first to complete today's gold level!
@@ -66,27 +17,7 @@
 
 <h6>Silver</h6>
 <% if top_speeds(day, 5, 1).any? %>
-  <table class="table table-light table-striped">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Name</th>
-        <th>Time</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% top_speeds(day, 5, 1).each.with_index do |r, i| %>
-        <tr>
-          <td><strong><%= i + 1 %></strong></td>
-          <td>
-              <img src="<%= r[0].photo_url %>" class="inline-avatar rounded">
-              <%= r[0].username %>
-          </td>
-          <td><%= r[1].completed_at.to_scoreboard_format %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <%= render 'days/silver_leaderboard', day: day, count: 5 %>
 <% else %>
   <p class="text-secondary text-center">
     You can still be the first to complete today's silver level!
