@@ -10,6 +10,15 @@ class UsersController < ApplicationController
     @user = current_user
 
     if @user.update(user_params)
+      # To avoid complications with data, we destroy the
+      # user's old participation if their id has changed and if
+      # we can find one in the current year. The next scoreboard
+      # sync will repopulate the leaderboard with their new data.
+      if @user.aoc_user_id_previously_changed? && @user.aoc_user_id_previously_was &&
+          @user.participations.find_by(year: Year.find_by(number: Time.now.year))
+        @user.participations.find_by(year: Year.find_by(number: Time.now.year)).destroy
+        flash.now[:warning] = "Your old data for #{Time.now.year} has been removed. Your new data will be backfilled at the next scoreboard update."
+      end
       render 'users/_success'
     else
       render 'users/_edit'
