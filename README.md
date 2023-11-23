@@ -23,6 +23,14 @@ It is also possible to use just the `Dockerfile` for the app container, but then
 |**AOC_LEADERBOARD_JOIN_TOKEN**|The code with which new users can join the private leaderboard. You can find it [here.](https://adventofcode.com/2023/leaderboard/private)|
 |**AOC_LOGIN_TOKEN**|Session cookie from Advent of Code. Pull this from your browser, they last about a month.|
 
+#### Getting admin status
+
+Admins in our app cannot actually do much, but they can access the dashboard
+for Good Job, our jobs backend. To give yourself admin access after logging in,
+open a terminal in the app container, run `bin/rails console` and update your
+details like so: `User.find(username: your-42-username).update(admin: true)`.
+At this point, you will be able to access the dashboard through `127.0.0.1:3000/good_job`.
+
 ### Contributing
 
 The whole thing is a short and sweet Rails 7 app. A dev container file is included in the repo, so after filling out the environment variables, getting started is easy.
