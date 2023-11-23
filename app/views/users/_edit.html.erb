@@ -1,0 +1,10 @@
+<turbo-frame id="edit-user-frame">
+  <% if logged_in? %>
+    <div class="row">
+      <%= form_with model: current_user, url: update_user_url, method: 'patch' do |f| %>
+        <%= f.text_field :aoc_user_id %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+  <%end %>
+</turbo-frame>

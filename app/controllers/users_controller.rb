@@ -1,15 +1,18 @@
 class UsersController < ApplicationController
+  before_action :signed_in_user
+
   def edit
     @user = current_user
+    render 'users/_edit'
   end
 
   def update
     @user = current_user
 
     if @user.update(user_params)
-      render root_url
+      render 'users/_success'
     else
-      render 'edit'
+      render 'users/_edit'
     end
   end
 
@@ -27,5 +30,9 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:aoc_user_id)
+  end
+
+  def signed_in_user
+    redirect_to root_url unless logged_in?
   end
 end

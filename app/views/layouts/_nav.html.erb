@@ -1,7 +1,7 @@
 <nav>
   <div class="navbar">
     <div class="container">
-      <%= link_to root_url, class: "navbar-brand" do %>
+      <%= link_to root_url, class: 'navbar-brand' do %>
         Codam Advent of Code Leaderboard
         <span class="text-secondary text-italic">
           <%= page_year %>
@@ -15,6 +15,9 @@
               <img src="<%= current_user.photo_url %>" class="rounded inline-avatar">
             <% end %>
             <%= current_user.username %>
+            <%= link_to edit_user_url, 'data-turbo-frame': 'edit-user-frame', class: 'ms-2' do %>
+              <%= bootstrap_icon 'gear-fill' %>
+            <% end %>
           </span>
           <%= form_tag('/logout', method: 'delete', data: {turbo: false}) do %>
             <button type='submit' class="btn btn-outline-danger">Log out</button>
