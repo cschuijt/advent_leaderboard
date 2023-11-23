@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def home
-    @year = Year.last # Assuming the most recent year was created last...
+    @year = Year.order(number: :desc).first
     if @year.nil?
       render 'pages/home'
       return
