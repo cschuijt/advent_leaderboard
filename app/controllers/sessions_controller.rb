@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     auth = request.env['omniauth.auth']
 
     unless auth.extra.raw_info.campus.any? { |campus| campus.id == 14 } # Codam's ID
-      flash[:error] = 'You are not associated with Codam, so you cannot log in here!'
+      flash[:danger] = 'You are not associated with Codam, so you cannot log in here!'
       redirect_to root_url
     end
 
@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
     user.save!
 
     log_in(user)
-    flash[:notice] = 'Successfully logged in.'
+    flash[:info] = 'Successfully logged in.'
     redirect_to root_url
   end
 
@@ -27,13 +27,13 @@ class SessionsController < ApplicationController
   def destroy
     log_out
 
-    flash[:notice] = 'Successfully logged out.'
+    flash[:info] = 'Successfully logged out.'
     redirect_to root_url
   end
 
   # Endpoint reached when something goes wrong during OAuth
   def failure
-    flash[:error] = 'Login was unsuccessful, please try again!'
+    flash[:warning] = 'Login was unsuccessful, please try again!'
     redirect_to root_url
   end
 
@@ -42,7 +42,7 @@ class SessionsController < ApplicationController
   def already_logged_in
     return unless logged_in?
 
-    flash[:error] = 'You are already logged in!'
+    flash[:warning] = 'You are already logged in!'
     redirect_to root_url
   end
 end
