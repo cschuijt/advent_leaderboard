@@ -8,6 +8,9 @@ if ENV["SENTRY_DSN"]
     # We recommend adjusting this value in production.
     config.traces_sample_rate = 1.0
 
+    # Profile all requests, for funsies
+    config.profiles_sample_rate = 1.0
+
     # Release is the commit SHA we are on.
     config.release = `git rev-parse HEAD`.chomp
   end
