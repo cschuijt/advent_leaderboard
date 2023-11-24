@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   # Callback for logging in with 42 will create a session,
   # logging out will destroy one
   get '/auth/marvin/callback', to: 'sessions#create'
+  get '/auth/failure',         to: 'sessions#failure'
   delete '/logout',            to: 'sessions#destroy'
 
   # Protection against unauthorized access in config/initializers/good_job.rb
