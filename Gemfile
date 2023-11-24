@@ -75,6 +75,7 @@ gem 'omniauth', '~> 2.1.1'
 gem 'omniauth-rails_csrf_protection'
 gem 'omniauth-marvin', github: 'fakenine/omniauth-marvin' # Edge version for oauth2 compatibility
 
+gem 'stackprof'
 gem 'sentry-ruby'
 gem 'sentry-rails'
 
