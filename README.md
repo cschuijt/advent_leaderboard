@@ -23,6 +23,20 @@ It is also possible to use just the `Dockerfile` for the app container, but then
 |**AOC_LEADERBOARD_JOIN_TOKEN**|The code with which new users can join the private leaderboard. You can find it [here.](https://adventofcode.com/2023/leaderboard/private)|
 |**AOC_LOGIN_TOKEN**|Session cookie from Advent of Code. Pull this from your browser, they last about a month.|
 
+#### Note for running locally
+
+If you run the app locally, chances are you are not behind an SSL-terminating
+reverse proxy. My deployment is, so the production environment is set up to
+assume SSL. If you spin up this app in an environment where you will _not_ be
+using HTTPS, make sure to change the following configuration options in
+`config/environments/production.rb` before building the container:
+```rb
+# In config/environments/production.rb
+config.assume_ssl = false
+config.force_ssl = false
+```
+This way, you will be able to run everything without SSL or malformed requests.
+
 #### Getting admin status
 
 Admins in our app cannot actually do much, but they can access the dashboard
