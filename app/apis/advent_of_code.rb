@@ -1,6 +1,8 @@
 # This module contains all the tools to do with fetching and interpreting
 # leaderboard data from Advent of Code.
 module AdventOfCode
+  include APIClient
+
   # The Setup is intended to be run in advance and creates
   # the models required to run the year's leaderboard.
   class Setup
@@ -118,24 +120,6 @@ module AdventOfCode
 
     def string_from_login_cookie(login_cookie)
       return "session=#{login_cookie}"
-    end
-  end
-
-  class HTTPError < StandardError
-    attr_reader :response
-
-    def initialize(message='HTTP Error', response=nil)
-      @response = response
-      super(message)
-    end
-  end
-
-  class FormattingError < StandardError
-    attr_reader :response
-
-    def initialize(message='Non-JSON response', response=nil)
-      @response = response
-      super(message)
     end
   end
 end
