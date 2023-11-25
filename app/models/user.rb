@@ -10,4 +10,11 @@ class User < ApplicationRecord
                           allow_nil: true
   validates :username, presence: true, uniqueness: true
 
+  before_validation :remove_hashtags
+
+  private
+
+  def remove_hashtags
+    aoc_user_id.remove!("#") if aoc_user_id
+  end
 end
