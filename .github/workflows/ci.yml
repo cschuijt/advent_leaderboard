@@ -48,7 +48,7 @@ jobs:
         with:
           bundler-cache: true
       - name: Security audit application code
-        run: bin/brakeman -q -w2
+        run: bin/bundle exec brakeman -q -w2
 
   # rubocop:
   #   runs-on: ubuntu-latest
