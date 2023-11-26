@@ -101,6 +101,7 @@ GEM
     bootstrap_form (5.4.0)
       actionpack (>= 6.1)
       activemodel (>= 6.1)
+    brakeman (6.0.1)
     builder (3.2.4)
     concurrent-ruby (1.2.2)
     connection_pool (2.4.1)
@@ -336,6 +337,7 @@ DEPENDENCIES
   bootstrap (~> 5.3.2)
   bootstrap-icons-helper
   bootstrap_form (~> 5.4)
+  brakeman
   dartsass-sprockets
   debug
   factory_bot_rails (~> 6.4)
