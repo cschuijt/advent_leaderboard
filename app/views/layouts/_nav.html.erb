@@ -31,7 +31,12 @@
               <img src="<%= current_user.photo_url %>" class="rounded inline-avatar">
             <% end %>
             <%= current_user.username %>
-            <%= link_to edit_user_url, 'data-turbo-frame': 'edit-user-frame', class: 'ms-2' do %>
+            <% if current_user.admin? %>
+              <%= link_to new_user_url, 'data-turbo-frame': 'edit-user-frame', class: 'ms-2 link-underline link-underline-opacity-0' do %>
+                <%= bootstrap_icon 'person-plus-fill' %>
+              <% end %>
+            <% end %>
+            <%= link_to edit_user_url, 'data-turbo-frame': 'edit-user-frame', class: 'ms-2 link-underline link-underline-opacity-0' do %>
               <%= bootstrap_icon 'gear-fill' %>
             <% end %>
           </span>
