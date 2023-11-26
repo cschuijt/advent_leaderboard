@@ -18,11 +18,14 @@ Rails.application.routes.draw do
   # Protection against unauthorized access in config/initializers/good_job.rb
   mount GoodJob::Engine => 'good_job'
 
-  # No need to do this the resourceful way, there is only
-  # one user you will ever need to edit, update or destroy
-  get    '/users', to: 'users#edit',    as: 'edit_user'
-  patch  '/users', to: 'users#update',  as: 'update_user'
-  delete '/users', to: 'users#destroy', as: 'destroy_user'
+  # We are not doing resourceful routing here because the user
+  # you will be editing or updating is always clear, it is the
+  # current user. For #new and #create, bindings also do not matter.
+  get    '/users/new', to: 'users#new',     as: 'new_user'
+  post   '/users',     to: 'users#create',  as: 'create_user'
+  get    '/users',     to: 'users#edit',    as: 'edit_user'
+  patch  '/users',     to: 'users#update',  as: 'update_user'
+  delete '/users',     to: 'users#destroy', as: 'destroy_user'
 
   # We do some implicit routing here
   # When adding other routes, put them above this one

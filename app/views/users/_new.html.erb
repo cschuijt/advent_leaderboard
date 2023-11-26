@@ -1,0 +1,31 @@
+<turbo-frame id="edit-user-frame">
+  <div class="row justify-content-end" id="edit-user-form-div">
+      <div class="col-md-8 col-lg-6 col-xl-4">
+        <%= bootstrap_form_with model: @user, url: create_user_url, method: 'post' do |f| %>
+          <div class="card">
+            <div class="card-header container-fluid">
+              <div class="row">
+                <div class="col-10">
+                  <span class="fw-bold">Manually create user</span>
+                </div>
+                <div class="col-2 text-end">
+                  <button type="button" class="btn-close" aria-label="Close" onclick="document.getElementById('edit-user-form-div').remove();"></button>
+                </div>
+              </div>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <%= f.text_field :username, label: '42 Username' %>
+              </li>
+              <li class="list-group-item">
+                <%= f.text_field :aoc_user_id, label: 'Advent of Code User ID' %>
+              </li>
+            </ul>
+            <div class="card-footer">
+              <%= f.submit class: 'btn btn-primary' %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+</turbo-frame>

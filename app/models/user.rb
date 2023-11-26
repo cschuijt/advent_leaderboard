@@ -18,7 +18,7 @@ class User < ApplicationRecord
   # a specific username. This user will not be saved to the database
   # yet, so we can add their AoC ID to it beforehand.
   def self.from_42_api(username)
-    api_response = fortytwo_api_client.get()
+    api_response = fortytwo_api_client.get("/v2/users/#{username}")
 
     return User.new(
       username: api_response.login,

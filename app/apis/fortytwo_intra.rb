@@ -8,7 +8,7 @@ module FortytwoIntra
   end
 
   class APIClient
-    BASE_URL = 'https://api.intra.42.fr/v2'
+    BASE_URL = 'https://api.intra.42.fr'
 
     def initialize(uid, secret)
       @uid    = uid

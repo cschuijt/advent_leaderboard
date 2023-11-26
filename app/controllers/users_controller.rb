@@ -1,5 +1,22 @@
 class UsersController < ApplicationController
   before_action :signed_in_user
+  before_action :current_user_is_admin, only: [:new, :create]
+
+  def new
+    @user = User.new
+    render 'users/_new', layout: 'no_turbo_frame'
+  end
+
+  def create
+    @user = User.from_42_api(params[:user][:username])
+    @user.aoc_user_id = params[:user][:aoc_user_id]
+
+    if @user.save
+      render 'users/_success'
+    else
+      render 'users/_new'
+    end
+  end
 
   def edit
     @user = current_user
@@ -31,7 +48,7 @@ class UsersController < ApplicationController
     log_out # Ensure the user is not logged in anymore!
     @user.destroy
 
-    flash[:notice] = "Successfully removed your account from the systems."
+    flash[:notice] = 'Successfully removed your account from the systems.'
     redirect_to root_url
   end
 
@@ -43,5 +60,12 @@ class UsersController < ApplicationController
 
   def signed_in_user
     redirect_to root_url unless logged_in?
+  end
+
+  def current_user_is_admin
+    unless current_user.admin?
+      flash[:danger] = 'You must be an admin to perform this action!'
+      redirect_to root_url
+    end
   end
 end
