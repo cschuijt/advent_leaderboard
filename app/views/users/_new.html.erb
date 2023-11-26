@@ -6,7 +6,7 @@
             <div class="card-header container-fluid">
               <div class="row">
                 <div class="col-10">
-                  <span class="fw-bold">Manually create user</span>
+                  <span class="fw-bold">Manually Create User</span>
                 </div>
                 <div class="col-2 text-end">
                   <button type="button" class="btn-close" aria-label="Close" onclick="document.getElementById('edit-user-form-div').remove();"></button>
@@ -15,9 +15,20 @@
             </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">
-                <%= f.text_field :username, label: '42 Username' %>
+                <span class="text-secondary">
+                  <p>
+                    When inviting users, make sure they join the leaderboard
+                    with code <code><%= join_code %></code>, then ask them for
+                    their Advent of Code user ID.
+                  </p>
+                  <p>
+                    You can find the ID by going to <a href="https://adventofcode.com/<%= page_year %>/settings" target="_blank">settings</a>,
+                    then copy-pasting the number where it says "(anonymous user #000)".
+                  </p>
+                </span>
               </li>
               <li class="list-group-item">
+                <%= f.text_field :username, label: '42 Username' %>
                 <%= f.text_field :aoc_user_id, label: 'Advent of Code User ID' %>
               </li>
             </ul>
