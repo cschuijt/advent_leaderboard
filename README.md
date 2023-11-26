@@ -22,6 +22,7 @@ It is also possible to use just the `Dockerfile` for the app container, but then
 |**AOC_LEADERBOARD_ID**|The user ID of the owner of the private leaderboard you want to track. You can find yours [here.](https://adventofcode.com/2023/settings)|
 |**AOC_LEADERBOARD_JOIN_TOKEN**|The code with which new users can join the private leaderboard. You can find it [here.](https://adventofcode.com/2023/leaderboard/private)|
 |**AOC_LOGIN_TOKEN**|Session cookie from Advent of Code. Pull this from your browser, they last about a month.|
+⚠ 🚨 If you're going to deploy this app in a place where other people can access it, please regenerate the SECRET_KEY_BASE variable and do not use the one I generated for your convenience. It's not that hard.
 
 #### Note for running locally
 
