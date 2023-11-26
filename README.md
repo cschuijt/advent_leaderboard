@@ -50,5 +50,5 @@ At this point, you will be able to access the dashboard through `127.0.0.1:3000/
 
 The whole thing is a short and sweet Rails 7 app. A dev container file is included in the repo, so after filling out the environment variables, getting started is easy.
 
-The `main` branch automatically deploys to production. For pull requests that are
-not production ready, please target `development` instead.
+Feel free to target the `main` branch with your pull requests. A separate
+`deploy` branch automatically deploys the app to production.
