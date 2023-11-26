@@ -35,5 +35,23 @@ services:
     ports:
       - "5432:5432"
 
+  test:
+    profiles:
+      - test
+    build: .
+    image: advent-test:latest
+    container_name: advent-test
+    command: "bin/bundle exec rspec"
+    environment:
+      RAILS_ENV                  : test
+      TERM                       : xterm-256color
+      DB_HOST                    : ${DB_HOST}
+      DB_PORT                    : ${DB_PORT}
+      DB_USER                    : ${DB_USER}
+      DB_PASS                    : ${DB_PASS}
+      SECRET_KEY_BASE            : ${SECRET_KEY_BASE}
+    depends_on:
+      - db
+
 volumes:
   postgres_data: {}
