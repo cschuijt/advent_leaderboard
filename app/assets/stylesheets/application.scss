@@ -31,3 +31,18 @@
     background-color: #c0c0c0;
     color: $dark;
 }
+
+.calendar-container {
+    container-type: inline-size;
+}
+
+.calendar-content {
+    font-size: 4vw;
+    text-wrap: nowrap;
+}
+
+@container (min-width: 26px) {
+    .calendar-content {
+        font-size: calc(1.3rem + 0.6vw);
+    }
+}
