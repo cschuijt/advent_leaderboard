@@ -3,7 +3,7 @@
 name: "Test, audit and lint"
 on:
   push:
-
+    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
