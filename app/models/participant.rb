@@ -8,7 +8,7 @@ class Participant < ApplicationRecord
 
   delegate :username, :full_name, :photo_url, :aoc_user_id, to: :user
 
-  validates :year, uniqueness: { scope: :user }
+  validates :user, uniqueness: { scope: :year }
 
   def gold_stars
     self.stars.where(index: 2)
