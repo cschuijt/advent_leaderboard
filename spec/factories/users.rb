@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :user do
-    intra_username { "MyString" }
-    intra_display_name { "MyString" }
-    photo_url { "MyString" }
-    aoc_user_id { "" }
+    sequence(:username)    { |n| "user#{n}" }
+    full_name              { 'User Name' }
+    photo_url              { 'https://cdn.intra.42.fr/users/deadbeef/photo.png' }
+    sequence(:aoc_user_id) { |n| (2000000 + n).to_s }
   end
 end

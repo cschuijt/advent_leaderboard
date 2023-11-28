@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :day do
+    year
     number { 1 }
-    visible { false }
+    open   { false }
   end
 end
