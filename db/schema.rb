@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_22_002713) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_28_232542) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -129,6 +129,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_22_002713) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false, null: false
+    t.string "fortytwo_api_token"
+    t.string "fortytwo_api_refresh_token"
+    t.datetime "fortytwo_api_expires_at"
     t.index ["aoc_user_id"], name: "index_users_on_aoc_user_id", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end
@@ -137,6 +140,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_22_002713) do
     t.integer "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "finished", default: false, null: false
     t.index ["number"], name: "index_years_on_number", unique: true
   end
 
