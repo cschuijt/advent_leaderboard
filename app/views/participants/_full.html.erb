@@ -1,0 +1,11 @@
+<% if logged_in? %>
+  <span class="fw-bolder me-1">
+    <img src="<%= participant.photo_url %>" class="inline-avatar rounded">
+    <%= participant.username %>
+  </span>
+  <span class="italic text-secondary">
+    <%= participant.full_name %>
+  </span>
+<% else %>
+  <%= render 'participants/username_only', participant: participant %>
+<% end %>
