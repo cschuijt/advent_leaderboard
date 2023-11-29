@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
     unless auth.extra.raw_info.campus.any? { |campus| campus.id == 14 } # Codam's ID
       flash[:danger] = 'You are not associated with Codam, so you cannot log in here!'
       redirect_to root_url
+      return
     end
 
     user = User.find_or_initialize_by(username: auth.info.login)
