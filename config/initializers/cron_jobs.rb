@@ -1,31 +1,23 @@
 Rails.application.configure do
-  # There are two different kinds of background job: a job that runs every
-  # 20 minutes to update our version of the leaderboard throughout December,
-  # and a one-time job for November 20th to set up the new year's leaderboard.
-  # During the month, days are also opened so the layout knows which day is
-  # the currently active one. At the end of the month, a job runs to close
-  # all of them again.
+  # The job flow for the leaderboard is as follows:
+  # - On November 20th, the leaderboard for that year will be set up.
+  #   At this point, jobs will be enqueued to refresh it every 20 minutes.
+  #   These jobs will not use cron, but will not be enqueued as far as they
+  #   would end up in the past, so you can safely set up an older leaderboard,
+  #   or the current leaderboard halfway through the month.
+  # - Every day, the moment the current puzzle switches, a new day will
+  #   be marked as active, telling the frontend which one to highlight.
+  # - At the end of the month, all days will be marked as closed and the year
+  #   will be marked as over, which will enable the frontend to show stats for
+  #   the entire year when they are added.
   config.good_job.cron = {
-    update_leaderboard: {
-      cron: "*/20 * * DEC *",
-      class: "UpdateLeaderboardJob",
-      # This needs to be a proc, else it'll always use the year in which
-      # the server was started
-      kwargs: -> {
-        {
-          year:           Time.now.year,
-          leaderboard_id: ENV["AOC_LEADERBOARD_ID"],
-          cookie:         ENV["AOC_LOGIN_TOKEN"]
-        }
-      }
-    },
     setup_new_leaderboard: {
       cron: "0 0 20 NOV *",
       class: "SetupLeaderboardJob",
       # This needs to be a proc, else it'll always use the year in which
       # the server was started
       kwargs: -> { { year: Time.now.year, days: 25 } },
-      description: "Creates a new leaderboard for this year's Advent of Code"
+      description: "Creates a new leaderboard for this year and schedules update jobs."
     },
     open_next_day: {
       # Run at 5:01AM UTC because that is one minute after the new puzzle opens,
@@ -38,10 +30,10 @@ Rails.application.configure do
       description: "Sets the new day to open in the database"
     },
     close_all_days: {
-      # Run one minute after new year and ends the past year's event
-      cron: "1 0 1 JAN *",
+      # Run one minute after the event ends
+      cron: "1 5 26 DEC *",
       class: "CloseAllDaysJob",
-      kwargs: -> { { year: Time.now.year - 1 } },
+      kwargs: -> { { year: Time.now.year } },
       description: "End the event by closing all open days"
     }
   }
