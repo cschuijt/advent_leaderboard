@@ -1,0 +1,8 @@
+<% if logged_in? %>
+  <%= link_to participant.intra_url, class: 'text-reset link-underline link-underline-opacity-0 link-underline-opacity-75-hover', target: '_blank' do %>
+    <img src="<%= participant.photo_url %>" class="inline-avatar rounded">
+    <%= participant.username %>
+  <% end %>
+<% else %>
+  <%= render 'participants/username_only', participant: participant %>
+<% end %>
