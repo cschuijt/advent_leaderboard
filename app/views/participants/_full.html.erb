@@ -1,8 +1,8 @@
 <% if logged_in? %>
-  <span class="fw-bolder me-1">
+  <%= link_to participant.intra_url, class: 'text-reset fw-bolder link-underline link-underline-opacity-0 link-underline-opacity-75-hover me-1', target: '_blank' do %>
     <img src="<%= participant.photo_url %>" class="inline-avatar rounded">
     <%= participant.username %>
-  </span>
+  <% end %>
   <span class="italic text-secondary">
     <%= participant.full_name %>
   </span>
