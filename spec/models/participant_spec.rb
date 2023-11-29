@@ -13,6 +13,11 @@ RSpec.describe Participant, type: :model do
     )
   end
 
+  it 'should respond to intra_url' do
+    user = create(:user)
+    expect(user).to respond_to(:intra_url)
+  end
+
   describe 'user' do
     it 'should not have to be unique across different years' do
       user          = create(:user)

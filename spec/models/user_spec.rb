@@ -80,4 +80,12 @@ RSpec.describe User, type: :model do
       expect { participant.user.destroy }.to change { Participant.count }.by(-1)
     end
   end
+
+  describe 'intra_url' do
+    it 'should return a proper intra URL' do
+      user = create(:user)
+
+      expect(user.intra_url).to eq("https://profile.intra.42.fr/users/#{user.username}")
+    end
+  end
 end

@@ -27,6 +27,10 @@ class User < ApplicationRecord
     )
   end
 
+  def intra_url
+    return "https://profile.intra.42.fr/users/#{username}"
+  end
+
   private
 
   def remove_hashtags
