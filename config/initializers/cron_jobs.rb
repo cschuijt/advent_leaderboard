@@ -16,24 +16,24 @@ Rails.application.configure do
       class: "SetupLeaderboardJob",
       # This needs to be a proc, else it'll always use the year in which
       # the server was started
-      kwargs: -> { { year: Time.now.year, days: 25 } },
-      description: "Creates a new leaderboard for this year and schedules update jobs."
+      args: -> { [Time.now.year, 25] },
+      description: "Creates a new leaderboard for this year and schedules update jobs"
     },
     open_next_day: {
       # Run at 5:01AM UTC because that is one minute after the new puzzle opens,
       # after December 25th there is no need to run this anymore.
       cron: "1 5 1-25 DEC *",
-      class: "OpenNextDayJob",
+      class: "OpenDayJob",
       # This needs to be a proc, else the year and day
       # will not update dynamically.
-      kwargs: -> { { year: Time.now.year, day: Time.now.day } },
+      args: -> { [Time.now.year, Time.now.day] },
       description: "Sets the new day to open in the database"
     },
     close_all_days: {
       # Run one minute after the event ends
       cron: "1 5 26 DEC *",
       class: "CloseAllDaysJob",
-      kwargs: -> { { year: Time.now.year } },
+      kwargs: -> { [Time.now.year] },
       description: "End the event by closing all open days"
     }
   }

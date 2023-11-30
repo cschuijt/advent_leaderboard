@@ -32,8 +32,6 @@ services:
       POSTGRES_DB       : advent
       POSTGRES_USER     : ${DB_USER}
       POSTGRES_PASSWORD : ${DB_PASS}
-    ports:
-      - "5432:5432"
 
   test:
     profiles:

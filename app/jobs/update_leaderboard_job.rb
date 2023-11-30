@@ -3,9 +3,9 @@ class UpdateLeaderboardJob < ApplicationJob
 
   before_perform :check_if_stale_job
 
-  def perform(options = {})
+  def perform(year, options = {leaderboard_id: ENV['AOC_LEADERBOARD_ID'], cookie: ENV['AOC_LOGIN_TOKEN']})
     client = AdventOfCode::APIClient.new(
-      options[:year], options[:leaderboard_id], options[:cookie]
+      year, options[:leaderboard_id], options[:cookie]
     )
     parser = AdventOfCode::Parser.new(client.leaderboard)
     parser.import
