@@ -16,7 +16,8 @@ It is also possible to use just the `Dockerfile` for the app container, but then
 When requesting an API token from Intra, you need to add the right return URLs
 for the app, so 42 knows when you try to log in that it is sending you back to
 a trusted domain. The callback URI on the app's side is `/auth/marvin/callback`.
-For me, this is the contents of the "Callback URI" box in Intra's app settings:
+For me, this is the contents of the "Callback URI" box in Intra's app settings,
+allowing both local development and production use:
 ```
 http://127.0.0.1:3000/auth/marvin/callback
 http://localhost:3000/auth/marvin/callback
