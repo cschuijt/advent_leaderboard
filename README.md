@@ -4,9 +4,24 @@ This app provides a simple integration between [Advent of Code](https://adventof
 
 ### Setup
 
-To host this app yourself, just set the environment variables and `docker compose up`! This will spin up the database and app containers. Background jobs run from the process pool on the app container, so you do not need another container for them. App is accessible through `localhost:3000` by default.
+To host this app yourself, just set the environment variables and `docker compose up`!
+This will spin up the database and app containers. Background jobs run from the process
+pool on the app container, so you do not need another container for them.
+App is accessible through `localhost:3000` by default.
 
 It is also possible to use just the `Dockerfile` for the app container, but then you have to set up the database yourself.
+
+#### 42 API setup
+
+When requesting an API token from Intra, you need to add the right return URLs
+for the app, so 42 knows when you try to log in that it is sending you back to
+a trusted domain. The callback URI on the app's side is `/auth/marvin/callback`.
+For me, this is the contents of the "Callback URI" box in Intra's app settings:
+```
+http://127.0.0.1:3000/auth/marvin/callback
+http://localhost:3000/auth/marvin/callback
+https://adventofcode.codam.nl/auth/marvin/callback
+```
 
 #### Environment Variables
 |Variable |Description|
@@ -49,7 +64,5 @@ At this point, you will be able to access the dashboard through `127.0.0.1:3000/
 
 ### Contributing
 
-The whole thing is a short and sweet Rails 7 app. A dev container file is included in the repo, so after filling out the environment variables, getting started is easy.
-
-Feel free to target the `main` branch with your pull requests. A separate
-`deploy` branch automatically deploys the app to production.
+The whole thing is a short and sweet Rails 7 app. A dev container file is included
+in the repo, so after filling out the environment variables, getting started is easy.
