@@ -13,7 +13,7 @@
         <td>
             <%= render r[0] %>
         </td>
-        <td><%= r[1].completed_at.to_time_taken %></td>
+        <td><%= time_taken(day, r[1]) %></td>
       </tr>
     <% end %>
   </tbody>

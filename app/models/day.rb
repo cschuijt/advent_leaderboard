@@ -9,7 +9,7 @@ class Day < ApplicationRecord
   end
 
   def start_time
-    return DateTime.new(self.year.number, 12, self.number, 5)
+    return Time.utc(self.year.number, 12, self.number, 5)
   end
 
   def end_time
