@@ -42,7 +42,7 @@ module DaysHelper
     if !top_star
       "Incomplete"
     elsif top_star.index == 2
-      "Gold"
+      "Gold + Silver"
     else
       "Silver"
     end
