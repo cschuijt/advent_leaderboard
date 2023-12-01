@@ -62,8 +62,8 @@ module DaysHelper
     if star.completed_at > day.end_time
       return ">24 hrs"
     else
-      difference = (star.completed_at - day.start_time).to_i.abs
-      Time.at(difference).utc.to_time_taken
+      difference = (star.completed_at.utc - day.start_time).abs
+      Time.at(difference).to_time_taken
     end
   end
 end

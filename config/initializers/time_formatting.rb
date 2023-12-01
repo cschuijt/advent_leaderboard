@@ -9,6 +9,6 @@ end
 
 class Time
   def to_time_taken
-    self.strftime('%-Hh, %-mm, %-Ss')
+    self.strftime('%-Hh, %-Mm, %-Ss')
   end
 end
