@@ -6,3 +6,9 @@ class ActiveSupport::TimeWithZone
     self.strftime('%e %b, %H:%M:%S')
   end
 end
+
+class Time
+  def to_time_taken
+    self.strftime('%-Hh, %-mm, %-Ss')
+  end
+end

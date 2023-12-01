@@ -1,3 +1,9 @@
+<div class="d-grid gap-4 mb-4">
+  <%= link_to day.puzzle_url, class: 'btn btn-lg btn-secondary' do %>
+    Today's Puzzle
+  <% end %>
+</div>
+
 <h4>Today's stats <span class="fs-5 text-secondary fw-normal">day <%= day.number %></span></h4>
 
 <%= render 'days/counters', day: day %>

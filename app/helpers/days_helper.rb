@@ -42,7 +42,7 @@ module DaysHelper
     if !top_star
       "Incomplete"
     elsif top_star.index == 2
-      "Gold"
+      "Gold + Silver"
     else
       "Silver"
     end
@@ -55,6 +55,15 @@ module DaysHelper
       nil
     else
       top_star.completed_at
+    end
+  end
+
+  def time_taken(day, star)
+    if star.completed_at > day.end_time
+      return ">24 hrs"
+    else
+      difference = (star.completed_at - day.start_time).to_i.abs
+      Time.at(difference).utc.to_time_taken
     end
   end
 end
