@@ -40,7 +40,7 @@ module AdventOfCode
           # this AoC user ID as their own. If so, we can find or create
           # a participant in this year. If not, we move on to the next.
           user = @users.find { |u| u.aoc_user_id == k }
-          if user
+          if user && v['completion_day_level'].any?
             # We use this construction instead of find_or_create_by to
             # avoid N+1 queries here.
             participant = @year.participants.find { |p| p.user_id == user.id } ||
