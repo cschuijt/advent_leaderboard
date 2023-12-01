@@ -41,11 +41,7 @@ RSpec.describe Day, type: :model do
       year = create(:year, number: 2023)
       day = create(:day, year: year, number: 1)
 
-      expect(day.start_time.year).to eq(2023)
-      expect(day.start_time.month).to eq(12)
-      expect(day.start_time.day).to eq(1)
-      expect(day.start_time.hour).to eq(5)
-      expect(day.start_time.minute).to eq(0)
+      expect(day.start_time).to eq(Time.utc(2023, 12, 1, 5))
     end
   end
 
@@ -54,11 +50,7 @@ RSpec.describe Day, type: :model do
       year = create(:year, number: 2023)
       day = create(:day, year: year, number: 1)
 
-      expect(day.end_time.year).to eq(2023)
-      expect(day.end_time.month).to eq(12)
-      expect(day.end_time.day).to eq(2)
-      expect(day.end_time.hour).to eq(5)
-      expect(day.end_time.minute).to eq(0)
+      expect(day.end_time).to eq(Time.utc(2023, 12, 2, 5))
     end
   end
 end
