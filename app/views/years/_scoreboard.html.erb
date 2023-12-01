@@ -13,7 +13,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @year.participants.each.with_index do |p, i| %>
+    <% @year.participants.order(score: :desc).each.with_index do |p, i| %>
       <tr>
         <td><strong><%= i + 1 %></strong></td>
         <td>
