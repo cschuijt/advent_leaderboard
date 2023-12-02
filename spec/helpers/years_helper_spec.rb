@@ -13,14 +13,16 @@ RSpec.describe YearsHelper, type: :helper do
 
       6.times do
         day = create(:day, year: @year, number: i)
-        create(:star, day: day, index: 1)
+        participant = create(:participant, year: @year)
+        create(:star, day: day, index: 1, participant: participant)
         i = i + 1
       end
 
       4.times do
         day = create(:day, year: @year, number: i)
-        create(:star, day: day, index: 1)
-        create(:star, day: day, index: 2)
+        participant = create(:participant, year: @year)
+        create(:star, day: day, index: 1, participant: participant)
+        create(:star, day: day, index: 2, participant: participant)
         i = i + 1
       end
     end
@@ -30,13 +32,17 @@ RSpec.describe YearsHelper, type: :helper do
     end
 
     it 'should change when a new star is obtained' do
-      expect { create(:star, day: @year.days.find_by(number: 1), index: 1) }
-              .to change { count_completed_days(@year) }.by(1)
+      expect {
+        participant = create(:participant, year: @year)
+        create(:star, day: @year.days.find_by(number: 1), index: 1, participant: participant)
+      }.to change { count_completed_days(@year) }.by(1)
     end
 
     it 'should not count the same day twice' do
-      expect { create(:star, day: @year.days.find_by(number: 7), index: 1) }
-              .not_to change { count_completed_days(@year) }
+      expect {
+        participant = create(:participant, year: @year)
+        create(:star, day: @year.days.find_by(number: 7), index: 1, participant: participant)
+      }.not_to change { count_completed_days(@year) }
     end
   end
 end
