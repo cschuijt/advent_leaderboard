@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_28_232542) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_03_121906) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -106,6 +106,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_232542) do
     t.integer "score", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "position_yesterday"
     t.index ["year_id", "score"], name: "index_participants_on_year_id_and_score"
     t.index ["year_id", "user_id"], name: "index_participants_on_year_id_and_user_id", unique: true
   end
@@ -129,9 +130,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_232542) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false, null: false
-    t.string "fortytwo_api_token"
-    t.string "fortytwo_api_refresh_token"
-    t.datetime "fortytwo_api_expires_at"
     t.index ["aoc_user_id"], name: "index_users_on_aoc_user_id", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end
