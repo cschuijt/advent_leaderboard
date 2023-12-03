@@ -15,7 +15,12 @@
   <tbody>
     <% @year.participants.order(score: :desc).each.with_index do |p, i| %>
       <tr>
-        <td><strong><%= i + 1 %></strong></td>
+        <td>
+          <strong><%= i + 1 %></strong>
+          <% if p.position_yesterday.present? && p.position_yesterday != i %>
+            <%= render 'participants/delta', current_position: i, participant: p %>
+          <% end %>
+        </td>
         <td>
             <%= render 'participants/full', participant: p %>
         </td>

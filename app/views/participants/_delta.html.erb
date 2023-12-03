@@ -1,0 +1,9 @@
+<% if current_position < participant.position_yesterday %>
+  <span class="text-success-emphasis" title="Since the last puzzle was posted">
+    (+<%= participant.position_yesterday - current_position %>)
+  </span>
+<% else %>
+  <span class="text-danger-emphasis" title="Since the last puzzle was posted">
+    (<%= participant.position_yesterday - current_position %>)
+  </span>
+<% end %>
