@@ -14,10 +14,11 @@ class UpdateLeaderboardJob < ApplicationJob
   private
 
   def check_if_stale_job
+    puts scheduled_at
     # If the server has been off for some time, we do not want to kill
     # Advent of Code with a million requests. Therefore, a safety is
     # built in to only execute these jobs if their time is set to less
     # than five minutes ago.
-    throw :abort if scheduled_at && scheduled_at < Time.now - 5.minutes
+    throw :abort if scheduled_at && scheduled_at < Time.now.utc - 5.minutes
   end
 end

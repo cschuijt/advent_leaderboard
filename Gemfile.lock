@@ -101,7 +101,7 @@ GEM
     bootstrap_form (5.4.0)
       actionpack (>= 6.1)
       activemodel (>= 6.1)
-    brakeman (6.0.1)
+    brakeman (6.1.0)
     builder (3.2.4)
     concurrent-ruby (1.2.2)
     connection_pool (2.4.1)
@@ -115,9 +115,9 @@ GEM
       sprockets-rails
       tilt
     date (3.3.4)
-    debug (1.8.0)
-      irb (>= 1.5.0)
-      reline (>= 0.3.1)
+    debug (1.9.0)
+      irb (~> 1.10)
+      reline (>= 0.3.8)
     diff-lcs (1.5.0)
     drb (2.2.0)
       ruby2_keywords
@@ -140,7 +140,7 @@ GEM
       raabro (~> 1.4)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    good_job (3.21.2)
+    good_job (3.21.4)
       activejob (>= 6.0.0)
       activerecord (>= 6.0.0)
       concurrent-ruby (>= 1.0.2)
@@ -159,7 +159,7 @@ GEM
       activesupport (>= 6.0.0)
       railties (>= 6.0.0)
     io-console (0.6.0)
-    irb (1.10.0)
+    irb (1.10.1)
       rdoc
       reline (>= 0.3.8)
     jbuilder (2.11.5)
@@ -184,7 +184,7 @@ GEM
     multi_json (1.15.0)
     multi_xml (0.6.0)
     mutex_m (0.2.0)
-    net-imap (0.4.6)
+    net-imap (0.4.7)
       date
       net-protocol
     net-pop (0.1.2)
@@ -193,7 +193,7 @@ GEM
       timeout
     net-smtp (0.4.0)
       net-protocol
-    nio4r (2.6.1)
+    nio4r (2.7.0)
     nokogiri (1.15.5-x86_64-linux)
       racc (~> 1.4)
     oauth2 (2.0.9)
@@ -261,11 +261,11 @@ GEM
       thor (~> 1.0, >= 1.2.2)
       zeitwerk (~> 2.6)
     rake (13.1.0)
-    rdoc (6.6.0)
+    rdoc (6.6.1)
       psych (>= 4.0.0)
     redis (5.0.8)
       redis-client (>= 0.17.0)
-    redis-client (0.18.0)
+    redis-client (0.19.0)
       connection_pool
     reline (0.4.1)
       io-console (~> 0.5)
@@ -289,10 +289,10 @@ GEM
     ruby2_keywords (0.0.5)
     sass-embedded (1.66.1-x86_64-linux-gnu)
       google-protobuf (~> 3.23)
-    sentry-rails (5.14.0)
+    sentry-rails (5.15.0)
       railties (>= 5.0)
-      sentry-ruby (~> 5.14.0)
-    sentry-ruby (5.14.0)
+      sentry-ruby (~> 5.15.0)
+    sentry-ruby (5.15.0)
       concurrent-ruby (~> 1.0, >= 1.0.2)
     snaky_hash (2.0.1)
       hashie
