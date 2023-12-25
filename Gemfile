@@ -73,7 +73,7 @@ group :development do
   # gem "spring"
 end
 
-gem 'omniauth', '~> 2.1.1'
+gem 'omniauth', '~> 2.1.2'
 gem 'omniauth-rails_csrf_protection'
 gem 'omniauth-marvin', github: 'fakenine/omniauth-marvin' # Edge version for oauth2 compatibility
 
