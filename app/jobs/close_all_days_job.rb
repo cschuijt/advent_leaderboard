@@ -3,7 +3,7 @@ class CloseAllDaysJob < ApplicationJob
 
   def perform(year_no)
     ActiveRecord::Base.transaction do
-      year = Year.find_by!(year_no)
+      year = Year.find_by!(number: year_no)
       year.update!(finished: true)
       year.days.where(open: true).each do |day|
         day.update!(open: false)
