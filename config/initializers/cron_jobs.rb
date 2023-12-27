@@ -33,7 +33,7 @@ Rails.application.configure do
       # Run one minute after the event ends
       cron: "1 5 26 DEC *",
       class: "CloseAllDaysJob",
-      kwargs: -> { [Time.now.year] },
+      args: -> { [Time.now.year] },
       description: "End the event by closing all open days"
     }
   }
