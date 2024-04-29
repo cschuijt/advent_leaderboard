@@ -1,0 +1,23 @@
+when:
+- branch: main
+  event: push
+depends_on:
+  - test
+
+steps:
+  build-and-publish:
+    privileged: true
+    backend_options:
+      kubernetes:
+        securityContext:
+          privileged: true
+    image: woodpeckerci/plugin-docker-buildx
+    depends_on: ['rspec', 'brakeman']
+    secrets: [FORGE_OCI]
+    settings:
+      repo: forge.cschuijt.nl/casper-oci/advent_leaderboard
+      tag: latest
+      registry: forge.cschuijt.nl
+      username: casper
+      password:
+        from_secret: FORGE_OCI
