@@ -12,7 +12,6 @@ steps:
         securityContext:
           privileged: true
     image: woodpeckerci/plugin-docker-buildx
-    depends_on: ['rspec', 'brakeman']
     secrets: [FORGE_OCI]
     settings:
       repo: forge.cschuijt.nl/casper-oci/advent_leaderboard
