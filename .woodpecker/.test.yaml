@@ -27,6 +27,7 @@ steps:
       SECRET_KEY_BASE : 48fef7bcfd20d260074b29a17eb50f5eb3c1c1903100c747e43a7e1b457575b6d06dd0f9e0ee1391af0cb5ebbbb48c69c4565e97a5f7a85d216c5851a5286eda
     depends_on: [bundler-and-schema]
     commands:
+    - bin/bundle config --local deployment true
     - bin/bundle exec rspec
 
   brakeman:
@@ -40,6 +41,7 @@ steps:
       SECRET_KEY_BASE : 48fef7bcfd20d260074b29a17eb50f5eb3c1c1903100c747e43a7e1b457575b6d06dd0f9e0ee1391af0cb5ebbbb48c69c4565e97a5f7a85d216c5851a5286eda
     depends_on: [bundler-and-schema]
     commands:
+    - bin/bundle config --local deployment true
     - bin/bundle exec brakeman -q -w2
 
 services:
