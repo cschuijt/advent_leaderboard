@@ -3,7 +3,7 @@ steps:
     image: ruby:3.2.4
     environment:
       RAILS_ENV       : test
-      DB_HOST         : localhost
+      DB_HOST         : postgres
       DB_PORT         : 5432
       DB_USER         : advent
       DB_PASS         : password
@@ -16,7 +16,7 @@ steps:
     image: ruby:3.2.4
     environment:
       RAILS_ENV       : test
-      DB_HOST         : localhost
+      DB_HOST         : postgres
       DB_PORT         : 5432
       DB_USER         : advent
       DB_PASS         : password
@@ -29,7 +29,7 @@ steps:
     image: ruby:3.2.4
     environment:
       RAILS_ENV       : test
-      DB_HOST         : localhost
+      DB_HOST         : postgres
       DB_PORT         : 5432
       DB_USER         : advent
       DB_PASS         : password
