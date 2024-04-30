@@ -1,5 +1,8 @@
 when:
-- event: [push, pull_request, manual]
+- event: [push, manual]
+  branch: [main]
+- event: [pull_request]
+  branch: [main]
 
 steps:
   bundler-and-schema:
