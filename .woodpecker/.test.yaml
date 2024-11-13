@@ -1,0 +1,58 @@
+when:
+- event: [push, manual]
+  branch: [main]
+- event: [pull_request]
+  branch: [main]
+
+steps:
+  bundler-and-schema:
+    image: ruby:3.2.4
+    environment:
+      RAILS_ENV       : test
+      DB_HOST         : postgres
+      DB_PORT         : 5432
+      DB_USER         : advent
+      DB_PASS         : password
+      SECRET_KEY_BASE : 48fef7bcfd20d260074b29a17eb50f5eb3c1c1903100c747e43a7e1b457575b6d06dd0f9e0ee1391af0cb5ebbbb48c69c4565e97a5f7a85d216c5851a5286eda
+    commands:
+    - bin/bundle config --local deployment true
+    - bin/bundle install
+    - bin/rails db:schema:load
+
+  rspec:
+    image: ruby:3.2.4
+    environment:
+      RAILS_ENV       : test
+      DB_HOST         : postgres
+      DB_PORT         : 5432
+      DB_USER         : advent
+      DB_PASS         : password
+      SECRET_KEY_BASE : 48fef7bcfd20d260074b29a17eb50f5eb3c1c1903100c747e43a7e1b457575b6d06dd0f9e0ee1391af0cb5ebbbb48c69c4565e97a5f7a85d216c5851a5286eda
+    depends_on: [bundler-and-schema]
+    commands:
+    - bin/bundle config --local deployment true
+    - bin/bundle exec rspec
+
+  brakeman:
+    image: ruby:3.2.4
+    environment:
+      RAILS_ENV       : test
+      DB_HOST         : postgres
+      DB_PORT         : 5432
+      DB_USER         : advent
+      DB_PASS         : password
+      SECRET_KEY_BASE : 48fef7bcfd20d260074b29a17eb50f5eb3c1c1903100c747e43a7e1b457575b6d06dd0f9e0ee1391af0cb5ebbbb48c69c4565e97a5f7a85d216c5851a5286eda
+    depends_on: [bundler-and-schema]
+    commands:
+    - bin/bundle config --local deployment true
+    - bin/bundle exec brakeman -q -w2
+
+services:
+  - name: postgres
+    image: postgres:15
+    ports:
+      - 5432
+    environment:
+      POSTGRES_DB:       advent_test
+      POSTGRES_USER:     advent
+      POSTGRES_PASSWORD: password
