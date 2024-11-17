@@ -81,6 +81,6 @@ gem 'stackprof'
 gem 'sentry-ruby'
 gem 'sentry-rails'
 
-gem 'good_job', '~> 3.99.0'
+gem 'good_job', '~> 4.0'
 
 gem 'httparty', '~> 0.21.0'
