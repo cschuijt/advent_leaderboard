@@ -12,12 +12,12 @@ Rails.application.configure do
   #   the entire year when they are added.
   config.good_job.cron = {
     setup_new_leaderboard: {
-      cron: "0 0 20 NOV *",
+      cron: "0 0 1 NOV *",
       class: "SetupLeaderboardJob",
       # This needs to be a proc, else it'll always use the year in which
       # the server was started
       args: -> { [Time.now.year, 25] },
-      description: "Creates a new leaderboard for this year and schedules update jobs"
+      description: "Creates a new leaderboard for this year"
     },
     open_next_day: {
       # Run at 5:01AM UTC because that is one minute after the new puzzle opens,
