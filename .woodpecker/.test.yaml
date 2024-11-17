@@ -7,7 +7,7 @@ when:
 
 steps:
   bundler-and-schema:
-    image: ruby:3.2.4
+    image: ruby:3.2.5
     environment:
       RAILS_ENV       : test
       DB_HOST         : postgres
@@ -21,7 +21,7 @@ steps:
     - bin/rails db:schema:load
 
   rspec:
-    image: ruby:3.2.4
+    image: ruby:3.2.5
     environment:
       RAILS_ENV       : test
       DB_HOST         : postgres
@@ -35,7 +35,7 @@ steps:
     - bin/bundle exec rspec
 
   brakeman:
-    image: ruby:3.2.4
+    image: ruby:3.2.5
     environment:
       RAILS_ENV       : test
       DB_HOST         : postgres
