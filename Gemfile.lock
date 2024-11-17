@@ -143,7 +143,7 @@ GEM
       raabro (~> 1.4)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    good_job (3.21.5)
+    good_job (3.99.1)
       activejob (>= 6.0.0)
       activerecord (>= 6.0.0)
       concurrent-ruby (>= 1.0.2)
@@ -354,7 +354,7 @@ DEPENDENCIES
   dartsass-sprockets
   debug
   factory_bot_rails (~> 6.4)
-  good_job (~> 3.21.5)
+  good_job (~> 3.99.0)
   httparty (~> 0.21.0)
   importmap-rails
   jbuilder
