@@ -11,7 +11,7 @@ steps:
       kubernetes:
         securityContext:
           privileged: true
-    image: woodpeckerci/plugin-docker-buildx:5.1.0
+    image: woodpeckerci/plugin-docker-buildx
     secrets: [FORGE_OCI]
     settings:
       repo: forge.cschuijt.nl/casper-oci/advent_leaderboard
