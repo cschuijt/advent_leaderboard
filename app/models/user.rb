@@ -3,6 +3,8 @@ class User < ApplicationRecord
   has_many :years, through: :participations
   has_many :stars, through: :participations
 
+  belongs_to :coalition, foreign_key: :fortytwo_id
+
   validates :aoc_user_id, format: {
                             with: /\A\d+\z/, message: 'Only digits (0-9) allowed'
                           },

@@ -10,9 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_28_232542) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_23_155817) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "coalitions", force: :cascade do |t|
+    t.integer "fortytwo_id", null: false
+    t.string "name", null: false
+    t.string "cover_url"
+    t.index ["fortytwo_id"], name: "index_coalitions_on_fortytwo_id", unique: true
+  end
 
   create_table "days", force: :cascade do |t|
     t.integer "number"
@@ -129,7 +136,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_232542) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false, null: false
+    t.integer "coalition_id"
     t.index ["aoc_user_id"], name: "index_users_on_aoc_user_id", unique: true
+    t.index ["coalition_id"], name: "index_users_on_coalition_id"
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
