@@ -84,3 +84,5 @@ gem 'sentry-rails'
 gem 'good_job', '~> 3.21.5'
 
 gem 'httparty', '~> 0.21.0'
+
+gem 'oauth2', '~> 2.0'
