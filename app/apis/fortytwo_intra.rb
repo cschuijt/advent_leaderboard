@@ -17,10 +17,14 @@ module FortytwoIntra
 
     # Returns a Ruby hash of the response from the endpoint, or raises
     # OAuth2::Error when a non-200 code is returned.
-    def get(path)
-      token.get(path).parsed
+    def get(path, options = {})
+      token.get(path, options).parsed
     end
 
+    # Returns the entire response object from OAuth2
+    def get_response(path, options = {})
+      token.get(path, options)
+    end
 
     private
 
