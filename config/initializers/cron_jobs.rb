@@ -19,6 +19,11 @@ Rails.application.configure do
       args: -> { [Time.now.year, 25] },
       description: "Creates a new leaderboard for this year and schedules update jobs"
     },
+    refresh_coalitions: {
+      cron: "0 0 1 * *",
+      class: "UpdateCoalitionsJob",
+      description: "Updates the coalition details from 42"
+    },
     open_next_day: {
       # Run at 5:01AM UTC because that is one minute after the new puzzle opens,
       # after December 25th there is no need to run this anymore.
