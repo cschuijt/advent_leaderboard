@@ -22,6 +22,9 @@ services:
       AOC_LEADERBOARD_JOIN_TOKEN : ${AOC_LEADERBOARD_JOIN_TOKEN}
       AOC_LOGIN_TOKEN            : ${AOC_LOGIN_TOKEN}
 
+    env_file:
+      - ../.env
+
     container_name: advent-dev-app
 
     # Overrides default command so things don't shut down after the process ends.
