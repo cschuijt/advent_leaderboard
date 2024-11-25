@@ -23,6 +23,9 @@ class SessionsController < ApplicationController
     log_in(user)
     flash[:info] = 'Successfully logged in.'
     # logger.info auth
+
+    # Queue up a job to refresh this user's coalitions
+    UpdateUserCoalitionsJob.perform_later(user)
     redirect_to root_url
   end
 

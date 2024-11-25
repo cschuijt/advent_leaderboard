@@ -21,7 +21,7 @@ Rails.application.configure do
     },
     refresh_coalitions: {
       cron: "0 0 1 * *",
-      class: "UpdateCoalitionsJob",
+      class: "RefreshCoalitionsJob",
       description: "Updates the coalition details from 42"
     },
     open_next_day: {

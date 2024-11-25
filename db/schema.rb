@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_24_155745) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_25_122504) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -25,6 +25,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_24_155745) do
     t.bigint "coalition_id"
     t.bigint "user_id"
     t.index ["coalition_id"], name: "index_coalitions_users_on_coalition_id"
+    t.index ["user_id", "coalition_id"], name: "index_coalitions_users_on_user_id_and_coalition_id", unique: true
     t.index ["user_id"], name: "index_coalitions_users_on_user_id"
   end
 

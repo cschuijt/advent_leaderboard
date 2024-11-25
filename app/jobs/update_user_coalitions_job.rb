@@ -21,6 +21,18 @@ class UpdateUserCoalitionsJob < ApplicationJob
       if try == 5 then
         raise IntraAPIError, "tried and failed to fetch #{user.username}'s coalitions five times"
       end
+
+      resp.parsed.each do |coalition_data|
+        user.coalitions = []
+        user.coalitions << Coalition.find_by!(fortytwo_id: coalition_data['coalition_id'])
+      end
+    end
+
+    # Now that we have updated the user's coalition list, we may have to
+    # remove their currently selected coalition, in case it is no longer
+    # one of their coalitions. In that case, we select a new one for them.
+    if !user.coalitions.include?(user.coalition)
+      user.update!(coalition: nil)
     end
   end
 end

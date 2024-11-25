@@ -13,9 +13,10 @@ class User < ApplicationRecord
                           uniqueness: true,
                           allow_nil: true
   validates :username, presence: true, uniqueness: true
-  validates :coalition, inclusion: { in: ->(user) { user.coalitions } }
+  validates :coalition, inclusion: { in: ->(user) { user.coalitions }, allow_nil: true }
 
   before_validation :remove_hashtags
+  before_save       :choose_default_coalition
 
   extend FortytwoIntra
 
@@ -40,5 +41,11 @@ class User < ApplicationRecord
 
   def remove_hashtags
     aoc_user_id.remove!("#") if aoc_user_id
+  end
+
+  def choose_default_coalition
+    if !coalition && coalitions.any?
+      self.coalition = coalitions.first
+    end
   end
 end
