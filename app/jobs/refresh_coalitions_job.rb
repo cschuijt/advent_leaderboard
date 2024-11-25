@@ -5,7 +5,7 @@ class RefreshCoalitionsJob < ApplicationJob
   queue_as :default
 
   def fortytwo_api_client
-    FortytwoIntra::APIClient.new(ENV['FORTYTWO_KEY'], ENV['FORTYTWO_SECRET'])
+    @client ||= FortytwoIntra::APIClient.new(ENV['FORTYTWO_KEY'], ENV['FORTYTWO_SECRET'])
   end
 
   def perform

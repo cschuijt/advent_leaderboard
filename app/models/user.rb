@@ -3,7 +3,9 @@ class User < ApplicationRecord
   has_many :years, through: :participations
   has_many :stars, through: :participations
 
-  belongs_to :coalition, foreign_key: :fortytwo_id
+  has_and_belongs_to_many :coalitions
+
+  belongs_to :coalition, optional: true
 
   validates :aoc_user_id, format: {
                             with: /\A\d+\z/, message: 'Only digits (0-9) allowed'
@@ -11,6 +13,7 @@ class User < ApplicationRecord
                           uniqueness: true,
                           allow_nil: true
   validates :username, presence: true, uniqueness: true
+  validates :coalition, inclusion: { in: ->(user) { user.coalitions } }
 
   before_validation :remove_hashtags
 
@@ -25,7 +28,7 @@ class User < ApplicationRecord
     return User.new(
       username: api_response.login,
       full_name: api_response.usual_full_name,
-      photo_url: api_response.image.versions.medium
+      photo_url: api_response.image&.versions&.medium
     )
   end
 
