@@ -6,17 +6,12 @@ depends_on:
 
 steps:
   build-and-publish:
-    privileged: true
-    backend_options:
-      kubernetes:
-        securityContext:
-          privileged: true
-    image: woodpeckerci/plugin-docker-buildx:5.1.0
+    image: woodpeckerci/plugin-kaniko
     secrets: [FORGE_OCI]
     settings:
-      repo: forge.cschuijt.nl/casper-oci/advent_leaderboard
+      repo: casper-oci/advent_leaderboard
       tag: latest
-      registry: forge.cschuijt.nl
+      registry: forge.vloot.dev
       username: casper
       password:
         from_secret: FORGE_OCI
