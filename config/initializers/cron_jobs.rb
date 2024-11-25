@@ -12,12 +12,12 @@ Rails.application.configure do
   #   the entire year when they are added.
   config.good_job.cron = {
     setup_new_leaderboard: {
-      cron: "0 0 20 NOV *",
+      cron: "0 0 1 NOV *",
       class: "SetupLeaderboardJob",
       # This needs to be a proc, else it'll always use the year in which
       # the server was started
       args: -> { [Time.now.year, 25] },
-      description: "Creates a new leaderboard for this year and schedules update jobs"
+      description: "Creates a new leaderboard for this year"
     },
     refresh_coalitions: {
       cron: "0 0 1 * *",
@@ -27,7 +27,7 @@ Rails.application.configure do
     open_next_day: {
       # Run at 5:01AM UTC because that is one minute after the new puzzle opens,
       # after December 25th there is no need to run this anymore.
-      cron: "1 5 1-25 DEC *",
+      cron: "1 0 1-25 DEC * America/New_York",
       class: "OpenDayJob",
       # This needs to be a proc, else the year and day
       # will not update dynamically.
@@ -36,10 +36,17 @@ Rails.application.configure do
     },
     close_all_days: {
       # Run one minute after the event ends
-      cron: "1 5 26 DEC *",
+      cron: "1 0 26 DEC * America/New_York",
       class: "CloseAllDaysJob",
       args: -> { [Time.now.year] },
       description: "End the event by closing all open days"
+    },
+    update_leaderboard: {
+      # Run every 20 minutes during the event
+      cron: "*/20 * 1-25 DEC * America/New_York",
+      class: "UpdateLeaderboardJob",
+      args: -> { [Time.now.year] },
+      description: "Update the leaderboard with the latest from Advent of Code"
     }
   }
 end
