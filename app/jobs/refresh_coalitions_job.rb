@@ -48,7 +48,12 @@ class RefreshCoalitionsJob < ApplicationJob
 
         resp.parsed.each do |data|
           coalition = Coalition.find_or_create_by!(fortytwo_id: data['id'])
-          coalition.update!(name: data['name'], cover_url: data['cover_url'])
+          coalition.update!(
+            name:      data['name'],
+            cover_url: data['cover_url'],
+            color:     data['color'],
+            image_url: data['image_url']
+          )
         end
 
         logger.info "Done fetching page #{i} of coalitions."
