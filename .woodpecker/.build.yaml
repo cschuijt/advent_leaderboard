@@ -1,6 +1,7 @@
 when:
 - branch: main
   event: [push, manual]
+
 depends_on:
   - test
 
