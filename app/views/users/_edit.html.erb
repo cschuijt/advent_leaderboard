@@ -28,8 +28,14 @@
                         Go to <a href="https://adventofcode.com" target="_blank">adventofcode.com</a> and log in.
                       </li>
                       <li>
-                        Go to the <a href="https://adventofcode.com/<%= page_year %>/leaderboard/private" target="_blank">private leaderboards</a>
-                        page and join our leaderboard with code <code><%= join_code %></code>.
+                        <div data-controller="leaderboard">
+                          Go to the <a href="https://adventofcode.com/<%= page_year %>/leaderboard/private" target="_blank">private leaderboards</a>
+                          page and join our leaderboard with code <code id="leaderboard-id"><%= join_code %></code>.
+                          <a class="text-primary link-underline link-underline-opacity-0" data-leaderboard-target="link" data-turbo-target="none" data-turbo="false" data-action="click->leaderboard#copy">
+                            <i class='bi-clipboard' data-action='click->leaderboard#copy' data-leaderboard-target='icon'></i>
+                            <span data-leaderboard-target="span"></span>
+                          </a>
+                        </div>
                       </li>
                       <li>
                         Go to your settings <a href="https://adventofcode.com/<%= page_year %>/settings" target="_blank">here.</a>
