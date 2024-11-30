@@ -6,7 +6,12 @@ class Participant < ApplicationRecord
 
   default_scope { joins(:user) }
 
-  delegate :username, :full_name, :photo_url, :aoc_user_id, :intra_url, to: :user
+  delegate :username,
+           :full_name,
+           :photo_url,
+           :aoc_user_id,
+           :intra_url,
+           :coalition,   to: :user
 
   validates :user, uniqueness: { scope: :year }
 
