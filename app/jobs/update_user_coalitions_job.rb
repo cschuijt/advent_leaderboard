@@ -22,8 +22,8 @@ class UpdateUserCoalitionsJob < ApplicationJob
         raise IntraAPIError, "tried and failed to fetch #{user.username}'s coalitions five times"
       end
 
+      user.coalitions = []
       resp.parsed.each do |coalition_data|
-        user.coalitions = []
         user.coalitions << Coalition.find_by!(fortytwo_id: coalition_data['coalition_id'])
       end
     end
