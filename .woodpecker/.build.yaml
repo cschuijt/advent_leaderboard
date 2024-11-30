@@ -8,7 +8,6 @@ depends_on:
 steps:
   build-and-publish:
     image: woodpeckerci/plugin-kaniko
-    secrets: [FORGE_OCI]
     settings:
       repo: casper-oci/advent_leaderboard
       tag: latest
