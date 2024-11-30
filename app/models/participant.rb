@@ -4,7 +4,7 @@ class Participant < ApplicationRecord
 
   has_many :stars, dependent: :destroy
 
-  default_scope { joins(:user) }
+  default_scope { joins(:user).includes(:stars) }
 
   delegate :username,
            :full_name,

@@ -7,6 +7,8 @@ class User < ApplicationRecord
 
   belongs_to :coalition, optional: true
 
+  default_scope { includes(:coalition) }
+
   validates :aoc_user_id, format: {
                             with: /\A\d+\z/, message: 'Only digits (0-9) allowed'
                           },
