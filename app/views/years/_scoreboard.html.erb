@@ -15,7 +15,7 @@
   </thead>
   <tbody>
     <% @year.participants.order(score: :desc).each.with_index do |p, i| %>
-      <tr>
+      <tr class="align-middle">
         <td><strong><%= i + 1 %></strong></td>
         <td style="background-color: <%= p.coalition.color %>; text-align: center;">
           <%= image_tag p.coalition.image_url, style: "min-width: 50%; max-width: 40px;", alt: p.coalition.name %>

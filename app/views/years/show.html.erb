@@ -1,11 +1,7 @@
 <% content_for :title do @year.number end %>
 
-<div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3 gx-4 gy-4 mt-4">
-  <div class="col">
-    <%= render 'years/scoreboard' %>
-  </div>
-
-  <div class="col">
+<div class="row gx-4 gy-4 mt-4">
+  <div class="col-12 col-lg-6 col-xl-4">
     <% if @today %>
       <%= render @today %>
     <% else %>
@@ -14,8 +10,14 @@
       </p>
     <% end %>
   </div>
+</div>
 
-  <div class="col">
+<div class="row gx-4 gy-4 mt-4">
+  <div class="col-12 col-lg-7 col-xl-8">
+    <%= render 'years/scoreboard' %>
+  </div>
+
+  <div class="col-12 col-lg-5 col-xl-4">
     <%= render 'years/days_overview' %>
   </div>
 </div>
