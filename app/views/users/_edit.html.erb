@@ -51,6 +51,15 @@
               <li class="list-group-item">
                 <%= f.text_field :aoc_user_id, label: 'User ID' %>
               </li>
+              <% if current_user.coalitions.count > 1 %>
+                <li class="list-group-item">
+                  <p class="text-secondary">
+                    You have multiple coalitions on record, so you can change
+                    which one your points go to here.
+                  </p>
+                  <%= f.collection_select :coalition_id, current_user.coalitions, :id, :name %>
+                </li>
+              <% end %>
             </ul>
             <div class="card-footer">
               <%= f.submit class: 'btn btn-primary' %>
