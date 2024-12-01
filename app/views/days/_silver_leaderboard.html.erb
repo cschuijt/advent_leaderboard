@@ -1,15 +1,23 @@
-<table class="table table-light table-striped">
+<table class="table table-light">
   <thead>
     <tr>
       <th>#</th>
+      <th>Coalition</th>
       <th>Name</th>
       <th>Time Taken</th>
     </tr>
   </thead>
   <tbody>
     <% top_speeds(day, 1, count).each.with_index do |star, i| %>
-      <tr>
+      <tr class="align-middle">
         <td><strong><%= i + 1 %></strong></td>
+        <% if star.participant.coalition %>
+          <td style="background-color: <%= star.participant.coalition.color %>; text-align: center;">
+            <%= image_tag star.participant.coalition.image_url, style: "min-width: 50%; max-width: 40px; max-height: 50px;", alt: star.participant.coalition.name %>
+          </td>
+        <% else %>
+          <td class="bg-secondary-subtle"></td>
+        <% end %>
         <td>
             <%= render star.participant %>
         </td>
