@@ -14,7 +14,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @participants&.each&.with_index do |p, i| %>
+    <% participants&.each&.with_index do |p, i| %>
       <tr class="align-middle">
         <td><strong><%= i + 1 %></strong></td>
         <% if p.coalition %>

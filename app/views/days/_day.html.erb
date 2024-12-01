@@ -11,21 +11,26 @@
 <hr>
 
 <h5>Today's fastest</h5>
+<div class="row">
+  <div class="col-lg-6">
+    <h6>Gold</h6>
+    <% if top_speeds(day, 2).any? %>
+      <%= render 'days/gold_leaderboard', day: day, count: 3 %>
+    <% else %>
+      <p class="text-secondary text-center">
+        You can still be the first to complete today's gold level!
+      </p>
+    <% end %>
+  </div>
+  <div class="col-lg-6">
+    <h6>Silver</h6>
+    <% if top_speeds(day, 1).any? %>
+      <%= render 'days/silver_leaderboard', day: day, count: 3 %>
+    <% else %>
+      <p class="text-secondary text-center">
+        You can still be the first to complete today's silver level!
+      </p>
+    <% end %>
+  </div>
+</div>
 
-<h6>Gold</h6>
-<% if top_speeds(day, 2).any? %>
-  <%= render 'days/gold_leaderboard', day: day, count: 3 %>
-<% else %>
-  <p class="text-secondary text-center">
-    You can still be the first to complete today's gold level!
-  </p>
-<% end %>
-
-<h6>Silver</h6>
-<% if top_speeds(day, 1).any? %>
-  <%= render 'days/silver_leaderboard', day: day, count: 3 %>
-<% else %>
-  <p class="text-secondary text-center">
-    You can still be the first to complete today's silver level!
-  </p>
-<% end %>

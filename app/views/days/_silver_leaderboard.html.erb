@@ -26,7 +26,7 @@
     <% end %>
     <% if count_silver_stars(day) > count %>
       <tr>
-        <td colspan="3" class="text-secondary text-center">
+        <td colspan="4" class="text-secondary text-center">
           <%= link_to year_day_url(day.year.number, day.number), class: 'link-secondary' do %>
             Full leaderboard (+<%= count_silver_stars(day) - count %>)
           <% end %>
