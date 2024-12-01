@@ -55,7 +55,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:aoc_user_id)
+    params.require(:user).permit(:aoc_user_id, :coalition_id)
   end
 
   def signed_in_user
