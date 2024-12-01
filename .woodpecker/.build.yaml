@@ -9,7 +9,7 @@ steps:
   build-and-publish:
     image: woodpeckerci/plugin-kaniko
     settings:
-      repo: casper-oci/advent_leaderboard
+      repo: casper/advent_leaderboard
       tag: latest
       registry: forge.vloot.dev
       username: casper
