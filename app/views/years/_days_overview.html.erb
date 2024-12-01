@@ -1,12 +1,12 @@
 <h4>Overview</h4>
 <div class="container-fluid">
   <div class="row row-cols-5 gx-1 gy-1">
-    <% @year.days.order(number: :asc).each do |day| %>
+    <% year_bg_array(@year).each.with_index do |bg, i| %>
       <div class="col">
-        <%= link_to year_day_url(@year.number, day.number), class: 'link-underline link-underline-opacity-0' do %>
-          <div class="card <%= bg_class_for_day(day) %>">
+        <%= link_to year_day_url(@year.number, i + 1), class: 'link-underline link-underline-opacity-0' do %>
+          <div class="card <%= bg %>">
             <div class="card-body w-auto text-center align-middle calendar-container">
-              <span class="text-reset calendar-content"><%= day.number %></span>
+              <span class="text-reset calendar-content"><%= i + 1 %></span>
             </div>
           </div>
         <% end %>

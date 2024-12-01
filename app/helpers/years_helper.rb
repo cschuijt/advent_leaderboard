@@ -1,16 +1,21 @@
 module YearsHelper
-  def bg_class_for_day(day)
-    if logged_in?
-      participant = day.year.participants.find_by(user: current_user)
-      star = day.stars.where(participant: participant).order(index: :desc).first
+  def year_bg_array(year)
+    array = []
+    year.days.count.times do |i|
+      array << nil
+    end
 
-      if !star
-        return nil
-      elsif star.index == 2
-        return 'bg-gold'
-      else
-        return 'bg-silver'
-      end
+    year.days.includes(:stars).where(stars: { participant_id: @participant&.id }).order(number: :asc).each do |day|
+      array[day.number - 1] = bg_class_for_star_count(day.stars.length)
+    end
+
+    return array
+  end
+
+  def bg_class_for_star_count(star)
+    if logged_in?
+      arr = [nil, 'bg-silver', 'bg-gold']
+      return arr[star]
     else
       return nil
     end
