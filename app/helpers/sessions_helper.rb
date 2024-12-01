@@ -11,9 +11,10 @@ module SessionsHelper
     return unless session[:user_id]
 
     @current_user ||= User.find_by(id: session[:user_id])
+
     Sentry.set_user({
-      id: @current_user.id,
-      username: @current_user.username
+      id: @current_user&.id,
+      username: @current_user&.username
     })
 
     return @current_user
