@@ -16,10 +16,10 @@ class Participant < ApplicationRecord
   validates :user, uniqueness: { scope: :year }
 
   def gold_stars
-    self.stars.where(index: 2)
+    self.stars.select { |star| star.index == 2 }
   end
 
   def silver_stars
-    self.stars.where(index: 1)
+    self.stars.select { |star| star.index == 1 }
   end
 end

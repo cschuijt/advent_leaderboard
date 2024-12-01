@@ -28,8 +28,8 @@
             <%= render 'participants/full', participant: p %>
         </td>
         <td><%= p.score %></td>
-        <td><%= p.gold_stars.count %></td>
-        <td><%= p.silver_stars.count %></td>
+        <td><%= p.gold_stars.length %></td>
+        <td><%= p.silver_stars.length %></td>
       </tr>
     <% end %>
   </tbody>
