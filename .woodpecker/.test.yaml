@@ -18,7 +18,7 @@ steps:
     - bin/rails db:schema:load
 
   rspec:
-    image: ruby:3.2.5
+    image: ruby:3.3.6
     environment:
       RAILS_ENV       : test
       DB_HOST         : postgres
@@ -32,7 +32,7 @@ steps:
     - bin/bundle exec rspec
 
   brakeman:
-    image: ruby:3.2.5
+    image: ruby:3.3.6
     environment:
       RAILS_ENV       : test
       DB_HOST         : postgres
