@@ -33,7 +33,7 @@ module DaysHelper
   end
 
   def top_speeds(day, index = 2, n = 3)
-    stars = day.stars.includes(:participant).where(index: index)
+    stars = day.stars.includes(participant: { user: :coalition }).where(index: index)
                      .order(completed_at: :asc).limit(n)
 
     return stars
