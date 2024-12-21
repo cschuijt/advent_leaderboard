@@ -118,7 +118,7 @@ GEM
       reline (>= 0.3.8)
     diff-lcs (1.5.1)
     drb (2.2.1)
-    erubi (1.13.0)
+    erubi (1.13.1)
     et-orbi (1.2.11)
       tzinfo
     execjs (2.10.0)
@@ -155,7 +155,7 @@ GEM
       multi_xml (>= 0.5.2)
     i18n (1.14.6)
       concurrent-ruby (~> 1.0)
-    importmap-rails (2.0.3)
+    importmap-rails (2.1.0)
       actionpack (>= 6.0.0)
       activesupport (>= 6.0.0)
       railties (>= 6.0.0)
@@ -170,7 +170,7 @@ GEM
     jwt (2.9.3)
       base64
     libv8-node (18.19.0.0-x86_64-linux)
-    logger (1.6.3)
+    logger (1.6.4)
     loofah (2.23.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
