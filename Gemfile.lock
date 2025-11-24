@@ -148,7 +148,7 @@ GEM
       bigdecimal
       rake (>= 13)
     hashie (5.0.0)
-    httparty (0.22.0)
+    httparty (0.23.2)
       csv
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
@@ -366,7 +366,7 @@ DEPENDENCIES
   debug
   factory_bot_rails (~> 6.4)
   good_job (~> 4.0)
-  httparty (~> 0.22.0)
+  httparty (~> 0.23.0)
   importmap-rails
   jbuilder
   mini_racer
